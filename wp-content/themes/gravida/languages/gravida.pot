@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Gravida\n"
-"POT-Creation-Date: 2017-05-19 16:23+0530\n"
+"POT-Creation-Date: 2018-12-24 17:51+0530\n"
 "PO-Revision-Date: 2017-05-19 15:17+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -31,15 +31,15 @@ msgid ""
 "best of us."
 msgstr ""
 
-#: archive.php:36 front-page.php:153
+#: archive.php:31 front-page.php:153
 msgid "Back"
 msgstr ""
 
-#: archive.php:37 front-page.php:154
+#: archive.php:32 front-page.php:154
 msgid "Next"
 msgstr ""
 
-#: archive.php:38
+#: archive.php:33
 msgid "Posts navigation"
 msgstr ""
 
@@ -47,23 +47,24 @@ msgstr ""
 msgid "Category: "
 msgstr ""
 
-#: comments.php:27
+#. translators: 1: number of comments, 2: post title
+#: comments.php:29
 #, php-format
 msgctxt "comments title"
-msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:33 comments.php:53
+#: comments.php:37 comments.php:55
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:34 comments.php:54
+#: comments.php:38 comments.php:56
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: comments.php:35 comments.php:55
+#: comments.php:39 comments.php:57
 msgid "Newer Comments &rarr;"
 msgstr ""
 
@@ -75,12 +76,12 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: content-page.php:22 content-single.php:40 inc/template-tags.php:70
+#: content-page.php:22 content-single.php:40 image.php:33
+#: inc/template-tags.php:68
 msgid "Edit"
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
-#: content-single.php:33 content.php:16 content.php:43
+#: content-single.php:33 content.php:16
 msgid ", "
 msgstr ""
 
@@ -94,11 +95,6 @@ msgstr ""
 
 #: content.php:29
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr ""
-
-#: content.php:47
-#, php-format
-msgid "Posted in %1$s"
 msgstr ""
 
 #: customize-pro/example-1/class-customize.php:76
@@ -309,86 +305,87 @@ msgstr ""
 msgid "Homepage Boxes"
 msgstr ""
 
-#: inc/customizer.php:369
+#. translators: %s: page boxes description
+#: inc/customizer.php:370
 #, php-format
 msgid ""
-"Featured Image Dimensions : ( 58 X 58 )<br/> Select Featured Image for these "
-"pages <br /> How to set featured image %s"
+"Featured Image Dimensions : ( 58 X 58 ) Select Featured Image for these "
+"pages  How to set featured image %s"
 msgstr ""
 
-#: inc/customizer.php:369
+#: inc/customizer.php:370
 msgid "Click Here ?"
 msgstr ""
 
-#: inc/customizer.php:388
+#: inc/customizer.php:389
 msgid "Choose a page for box one:"
 msgstr ""
 
-#: inc/customizer.php:401
+#: inc/customizer.php:402
 msgid "Choose a page for box two:"
 msgstr ""
 
-#: inc/customizer.php:413
+#: inc/customizer.php:414
 msgid "Choose a page for box three:"
 msgstr ""
 
-#: inc/customizer.php:425
+#: inc/customizer.php:426
 msgid "Choose a page for box four:"
 msgstr ""
 
-#: inc/customizer.php:430
+#: inc/customizer.php:431
 msgid "Social Settings"
 msgstr ""
 
-#: inc/customizer.php:431
+#: inc/customizer.php:432
 msgid "More social icon available in PRO Version"
 msgstr ""
 
-#: inc/customizer.php:442
+#: inc/customizer.php:443
 msgid "Add social heading here"
 msgstr ""
 
-#: inc/customizer.php:453
+#: inc/customizer.php:454
 msgid "Add facebook link here"
 msgstr ""
 
-#: inc/customizer.php:464
+#: inc/customizer.php:465
 msgid "Add twitter link here"
 msgstr ""
 
-#: inc/customizer.php:475
+#: inc/customizer.php:476
 msgid "Add google plus link here"
 msgstr ""
 
-#: inc/customizer.php:486
+#: inc/customizer.php:487
 msgid "Add linkedin link here"
 msgstr ""
 
-#: inc/customizer.php:492
+#: inc/customizer.php:493
 msgid "Contact Details"
 msgstr ""
 
-#: inc/customizer.php:493
+#: inc/customizer.php:494
 msgid "Add you contact details here"
 msgstr ""
 
-#: inc/customizer.php:503
+#: inc/customizer.php:504
 msgid "Add contact title here"
 msgstr ""
 
-#: inc/customizer.php:518
+#: inc/customizer.php:519
 msgid "Add contact description here"
 msgstr ""
 
-#: inc/customizer.php:535
+#: inc/customizer.php:536
 msgid "Add contact address here"
 msgstr ""
 
-#: inc/customizer.php:548
+#: inc/customizer.php:549
 msgid "Add contact number here."
 msgstr ""
 
-#: inc/customizer.php:559
+#: inc/customizer.php:560
 msgid "Add you email here"
 msgstr ""
 
@@ -406,25 +403,17 @@ msgctxt "Next post link"
 msgid "&rarr;"
 msgstr ""
 
-#: inc/template-tags.php:70
+#: inc/template-tags.php:68
 msgid "Pingback:"
 msgstr ""
 
-#: inc/template-tags.php:86
-#, php-format
-msgctxt "1: date"
-msgid "%1$s"
-msgstr ""
-
-#: inc/template-tags.php:93
+#: inc/template-tags.php:91
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:184
-#, php-format
-msgid ""
-"<span class=\"posted-on\">Published %1$s</span><span class=\"byline\"> by "
-"%2$s</span>"
+#: inc/template-tags.php:188
+msgctxt "Used before publish date."
+msgid "<span class=\"screen-reader-text\">Posted on</span>"
 msgstr ""
 
 #: no-results.php:11
@@ -443,7 +432,8 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: search.php:16
+#. translators: %s: search term
+#: search.php:18
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""

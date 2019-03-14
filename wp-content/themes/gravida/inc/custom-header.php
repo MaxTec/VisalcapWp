@@ -36,7 +36,7 @@ function gravida_header_style() {
 		if ( get_header_image() ) :
 	?>
 		.header {
-			background: url(<?php echo get_header_image(); ?>) no-repeat;
+			background: url(<?php echo esc_url(get_header_image()); ?>) no-repeat;
 			background-position: center top;
 		}
 	<?php endif; ?>	

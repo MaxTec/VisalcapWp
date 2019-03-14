@@ -33,7 +33,7 @@
                 
                                <?php $contact_mail = get_theme_mod('contact_mail'); ?>          
                <?php if(!empty($contact_mail)){ ?>
-                    <div class="mail-icon"></div><!-- mail-icon --><div class="mail-content"><a href="mailto:<?php echo sanitize_email($contact_mail); ?>"><?php echo $contact_mail; ?></a></div><!-- mail-content --><div class="clear"></div>
+                    <div class="mail-icon"></div><!-- mail-icon --><div class="mail-content"><a href="mailto:<?php echo esc_attr( antispambot(sanitize_email( $contact_mail ) )); ?>"><?php echo esc_html( antispambot( $contact_mail ) ); ?></a></div><!-- mail-content --><div class="clear"></div>
                 <?php } ?>
             </div><!-- cols -->
        </div><!-- widget-column -->
@@ -60,7 +60,7 @@
             <div class="cols">
             <?php $social_heading = get_theme_mod('social_heading'); ?>
 					<?php if (!empty($social_heading)) { ?>
-                    <h2><?php echo $social_heading; ?></h2>
+                    <h2><?php echo esc_html($social_heading); ?></h2>
                     <?php } ?>
             		<div class="social">
                         <?php $fb_link = get_theme_mod('fb_link'); ?>
@@ -91,7 +91,7 @@
 <div id="copyright">
 	<div class="site-aligner">
     	<div class="left"><?php printf('<a target="_blank" href="'.esc_url(SKT_URL).'" rel="nofollow">Gravida</a>' ); ?></div>
-    	<div class="right"><?php echo get_theme_mod('footer_right'); ?></div>
+    	<div class="right"><?php $footerrights = get_theme_mod('footer_right'); echo esc_html($footerrights); ?></div>
         <div class="clear"></div>
     </div>
 </div><!-- copyright -->

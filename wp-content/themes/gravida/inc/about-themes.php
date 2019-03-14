@@ -23,18 +23,18 @@ function gravida_mostrar_guide() {
 			  <?php esc_attr_e('About Theme Info', 'gravida'); ?>
 		   </div>
           <p><?php esc_attr_e('SKT Gravida as the name suggests is a responsive corporate multipurpose WordPress theme. It is a responsive theme and is suitable for any kind of industry. So not just Corporate but other industries like business, commercial, industrial, architects, professionals also can use it. Theme options and templates make this theme very easy to use. Compatible with popular plugins like WooCommerce and Contact form 7. Slider and content portions easy to set up and use.','gravida'); ?></p>
-		  <a href="<?php echo SKT_PRO_THEME_URL; ?>"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/free-vs-pro.png" alt="" /></a>
+		  <a href="<?php echo esc_url(SKT_PRO_THEME_URL); ?>"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/free-vs-pro.png" alt="" /></a>
 	</div><!-- .col-left -->
 	
 	<div class="col-right">			
 			<div style="text-align:center; font-weight:bold;">
 				<hr />
-				<a href="<?php echo SKT_THEME_DEMO; ?>" target="_blank"><?php esc_attr_e('Live Demo', 'gravida'); ?></a> | 
-				<a href="<?php echo SKT_PRO_THEME_URL; ?>"><?php esc_attr_e('Buy Pro', 'gravida'); ?></a> | 
-				<a href="<?php echo SKT_THEME_DOC; ?>" target="_blank"><?php esc_attr_e('Documentation', 'gravida'); ?></a>
+				<a href="<?php echo esc_url(SKT_THEME_DEMO); ?>" target="_blank"><?php esc_attr_e('Live Demo', 'gravida'); ?></a> | 
+				<a href="<?php echo esc_url(SKT_PRO_THEME_URL); ?>"><?php esc_attr_e('Buy Pro', 'gravida'); ?></a> | 
+				<a href="<?php echo esc_url(SKT_THEME_DOC); ?>" target="_blank"><?php esc_attr_e('Documentation', 'gravida'); ?></a>
                 <div style="height:5px"></div>
 				<hr />                
-                <a href="<?php echo SKT_URL; ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/sktskill.jpg" alt="" /></a>
+                <a href="<?php echo esc_url(SKT_URL); ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/sktskill.jpg" alt="" /></a>
 			</div>		
 	</div><!-- .col-right -->
 </div><!-- .wrapper-info -->

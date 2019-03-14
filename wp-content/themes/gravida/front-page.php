@@ -18,13 +18,13 @@ $sldimages = ''; ?>
 $slAr = array();
 $m = 0;
 for ($i=1; $i<6; $i++) {
-	if ( get_theme_mod('slide_image'.$i, $sldimages[$i]) != "" ) {
-		$imgSrc 	= get_theme_mod('slide_image'.$i, $sldimages[$i]);
+	if ( get_theme_mod('slide_image'.$i, !empty($sldimages[$i])) != "" ) {
+		$imgSrc 	= get_theme_mod('slide_image'.$i, !empty($sldimages[$i]));
 		$imgTitle	= get_theme_mod('slide_title'.$i);
 		$imgDesc	= get_theme_mod('slide_desc'.$i);
 		$imgLink	= get_theme_mod('slide_link'.$i);
 		if ( strlen($imgSrc) > 3 ) {
-			$slAr[$m]['image_src'] = get_theme_mod('slide_image'.$i, $sldimages[$i]);
+			$slAr[$m]['image_src'] = get_theme_mod('slide_image'.$i, !empty($sldimages[$i]));
 			$slAr[$m]['image_title'] = get_theme_mod('slide_title'.$i);
 			$slAr[$m]['image_desc'] = get_theme_mod('slide_desc'.$i);
 			$slAr[$m]['image_link'] = get_theme_mod('slide_link'.$i);
@@ -48,10 +48,10 @@ if( $slAr > 0 ){
     </div>
     <?php
 	foreach( $slideno as $sln ){ ?>
-    <div id="slidecaption<?php echo $sln; ?>" class="nivo-html-caption">
+    <div id="slidecaption<?php echo esc_attr($sln); ?>" class="nivo-html-caption">
       <div class="slide_info">
-        <h1><a href="<?php echo esc_url(get_theme_mod('slide_link'.$sln)); ?>"><?php echo get_theme_mod('slide_title'.$sln); ?></a></h1>
-        <p><?php echo get_theme_mod('slide_desc'.$sln); ?></p>
+        <h1><a href="<?php echo esc_url(get_theme_mod('slide_link'.$sln)); ?>"><?php echo esc_attr(get_theme_mod('slide_title'.$sln)); ?></a></h1>
+        <p><?php echo esc_attr(get_theme_mod('slide_desc'.$sln)); ?></p>
       </div>
     </div>
     <?php 
@@ -106,7 +106,7 @@ if( $slAr > 0 ){
                                         	<?php if( has_post_thumbnail() ) { ?>
 												<?php the_post_thumbnail(); ?>
                                             <?php } else {  ?>
-                                            	<img src="<?php echo get_template_directory_uri(); ?>/images/img_404.png" />
+                                            	<img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/img_404.png" />
                                             <?php } ?>
                                             </a>
                                         </p>

@@ -129,7 +129,7 @@ p.form-submit input[type="submit"]{background-color:#0ec7ab;}
 #footer .widget-column .mail-content{ float:right; margin:0; padding:0; width:82%; margin-top:14px;}
 #footer .widget-column a{ color:#ffffff;}
 #footer .widget-column ul{ margin:0 0 0 15px; padding:0;}
-#footer .widget-column ul li{font:16px 'Roboto Condensed',san-serif; padding-bottom:15px}
+#footer .widget-column ul li{font-size:14px; padding-bottom:15px}
 
 .social{margin:0; padding:0;}
 .social span{ display:inline; vertical-align:-moz-middle-with-baseline;}

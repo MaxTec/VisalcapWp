@@ -26,7 +26,7 @@
         </div><!-- .entry-summary -->
         <?php else : ?>
         <div class="entry-content">
-            <?php the_content( esc_attr_e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'gravida' ) ); ?>
+            <?php the_content( esc_html__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'gravida' ) ); ?>
             <?php
                 wp_link_pages( array(
                     'before' => '<div class="page-links">' . esc_attr__( 'Pages:', 'gravida' ),
@@ -35,35 +35,6 @@
             ?>
         </div><!-- .entry-content -->
         <?php endif; ?>
-    
-        <footer class="entry-meta" style="display:none;">
-            <?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
-                <?php
-                    /* translators: used between list items, there is a space after the comma */
-                    $categories_list = get_the_category_list( esc_attr__( ', ', 'gravida' ) );
-                    if ( $categories_list && gravida_categorized_blog() ) :
-                ?>
-                <span class="cat-links">
-                    <?php printf( esc_attr__( 'Posted in %1$s', 'gravida' ), $categories_list ); ?>
-                </span>
-                <?php endif; // End if categories ?>
-    
-                <?php
-                    /* translators: used between list items, there is a space after the comma */
-                    $tags_list = get_the_tag_list( '', esc_attr( ', ', 'gravida' ) );
-                    if ( $tags_list ) :
-                ?>
-                <span class="tags-links">
-                    <?php printf( esc_attr( 'Tagged %1$s', 'gravida' ), $tags_list ); ?>
-                </span>
-                <?php endif; // End if $tags_list ?>
-            <?php endif; // End if 'post' == get_post_type() ?>
-    
-            <?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-            <span class="comments-link"><?php comments_popup_link( esc_attr( 'Leave a comment', 'gravida' ), esc_attr( '1 Comment', 'gravida' ), esc_attr( '% Comments', 'gravida' ) ); ?></span>
-            <?php endif; ?>
-    
-            <?php edit_post_link( esc_attr( 'Edit', 'gravida' ), '<span class="edit-link">', '</span>' ); ?>
-        </footer><!-- .entry-meta -->
+    <!-- .entry-meta -->
     </article><!-- #post-## -->
 </div><!-- blog-post-repeat -->

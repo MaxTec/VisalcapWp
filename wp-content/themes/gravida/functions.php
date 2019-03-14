@@ -28,9 +28,6 @@ function gravida_setup() {
 		'width'       => 250,
 		'flex-height' => true,
 	) );
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
 	add_image_size('gravida-homepage-thumb',240,145,true);
 	register_nav_menus( array(
 		'primary' => esc_attr( 'Primary Menu', 'gravida' ),
@@ -168,32 +165,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-
-function gravida_custom_blogpost_pagination( $wp_query ){
-	$big = 999999999; // need an unlikely integer
-	if ( get_query_var('paged') ) { $pageVar = 'paged'; }
-	elseif ( get_query_var('page') ) { $pageVar = 'page'; }
-	else { $pageVar = 'paged'; }
-	$pagin = paginate_links( array(
-		'base' 			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-		'format' 		=> '?'.$pageVar.'=%#%',
-		'current' 		=> max( 1, get_query_var($pageVar) ),
-		'total' 		=> $wp_query->max_num_pages,
-		'prev_text'		=> '&laquo; Prev',
-		'next_text' 	=> 'Next &raquo;',
-		'type'  => 'array'
-	) ); 
-	if( is_array($pagin) ) {
-		$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-		echo '<div class="pagination"><div><ul>';
-		echo '<li><span>'. $paged . ' of ' . $wp_query->max_num_pages .'</span></li>';
-		foreach ( $pagin as $page ) {
-			echo "<li>$page</li>";
-		}
-		echo '</ul></div></div>';
-	} 
-}
 
 // get slug by id
 function gravida_get_slug_by_id($id) {

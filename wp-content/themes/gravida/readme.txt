@@ -4,8 +4,8 @@
 
 Theme Name      :   Gravida
 Theme URI       :   https://www.sktthemes.net/shop/gravida-corporate-wordpress-theme/
-Version         :   1.4.0
-Tested up to    :   WP 4.7.5
+Version         :   1.4.1
+Tested up to    :   WP 5.0.2
 Author          :   SKT Themes
 Author URI      :   https://www.sktthemes.net/
 

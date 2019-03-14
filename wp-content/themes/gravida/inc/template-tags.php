@@ -29,8 +29,8 @@ function gravida_content_nav( $nav_id ) {
 
 	$nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
 	?>
-	<nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'gravida' ); ?></h1>
+	<nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo esc_attr( $nav_class ); ?>">
+		<h1 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'gravida' ); ?></h1>
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
@@ -61,8 +61,6 @@ if ( ! function_exists( 'gravida_comment' ) ) :
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
 function gravida_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
@@ -83,14 +81,14 @@ function gravida_comment( $comment, $args, $depth ) {
 					<?php printf( '<cite class="fn">%s</cite> on', get_comment_author_link() ); ?>
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
-							<?php printf( _x( '%1$s', '1: date', 'gravida' ), get_comment_date(), get_comment_time() ); ?>
+							<?php printf( '%1$s | %2$s', get_comment_date(), get_comment_time() ); ?>
 						</time>
 					</a>
-					<?php edit_comment_link( esc_attr( 'Edit', 'gravida' ), '<span class="edit-link">', '</span>' ); ?>
+					<?php edit_comment_link( esc_html( 'Edit', 'gravida' ), '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-metadata -->
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'gravida' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'gravida' ); ?></p>
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 
@@ -173,24 +171,24 @@ function gravida_posted_on() {
 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) )
 		$time_string .= '<time class="updated" datetime="%3$s">%4$s</time>';
-
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
-
-	printf( __( '<span class="posted-on">Published %1$s</span><span class="byline"> by %2$s</span>', 'gravida' ),
-		sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
-			esc_url( get_permalink() ),
-			$time_string
-		),
-		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_html( get_the_author() )
-		)
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		get_the_date(),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		get_the_modified_date()
 	);
+	printf( // WPCS: XSS OK
+                '<span class="posted-on">%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',
+                wp_kses_post( _x( '<span class="screen-reader-text">Posted on</span>', 'Used before publish date.', 'gravida' ) ),
+                esc_url( get_permalink() ),
+                $time_string
+            );
 }
 endif;
 

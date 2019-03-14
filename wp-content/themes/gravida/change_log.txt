@@ -50,3 +50,6 @@ vii)   Removed from customizer panels that do not actually provide any thing to 
 viii)  Change screenshot.png
 ix)    Add about theme under Appearance.
 x)     Resolved Page Content Line Height Issue.
+
+Version 1.4.1
+i)  Solve NS-Theme Check Issue.

@@ -366,7 +366,8 @@ function gravida_customize_register( $wp_customize ) {
 	
 	$wp_customize->add_section('page_boxes',array(
 		'title'	=> esc_html__('Homepage Boxes','gravida'),
- 			'description' => sprintf( __( 'Featured Image Dimensions : ( 58 X 58 )<br/> Select Featured Image for these pages <br /> How to set featured image %s', 'gravida' ), sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( '"'.SKT_THEME_FEATURED_SET_VIDEO_URL.'"' ), __( 'Click Here ?', 'gravida' )
+			/* translators: %s: page boxes description */ 
+ 			'description' => sprintf( esc_html__( 'Featured Image Dimensions : ( 58 X 58 ) Select Featured Image for these pages  How to set featured image %s', 'gravida' ), sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( '"'.SKT_THEME_FEATURED_SET_VIDEO_URL.'"' ), esc_html__( 'Click Here ?', 'gravida' )
 						)
 					),
 		'priority'	=> null
