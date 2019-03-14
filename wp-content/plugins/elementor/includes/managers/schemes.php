@@ -5,8 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use Elementor\Core\Common\Modules\Ajax\Module as Ajax;
+use Elementor\TemplateLibrary\Source_Local;
+
 /**
- * Elementor scheme manager class.
+ * Elementor scheme manager.
  *
  * Elementor scheme manager handler class is responsible for registering and
  * initializing all the supported schemes.
@@ -230,21 +233,26 @@ class Schemes_Manager {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function ajax_apply_scheme() {
-		Plugin::$instance->editor->verify_ajax_nonce();
-
-		if ( ! isset( $_POST['scheme_name'] ) ) {
-			wp_send_json_error();
+	public function ajax_apply_scheme( $data ) {
+		if ( ! User::is_current_user_can_edit_post_type( Source_Local::CPT ) ) {
+			return false;
 		}
 
-		$scheme_obj = $this->get_scheme( $_POST['scheme_name'] );
+		if ( ! isset( $data['scheme_name'] ) ) {
+			return false;
+		}
+
+		$scheme_obj = $this->get_scheme( $data['scheme_name'] );
+
 		if ( ! $scheme_obj ) {
-			wp_send_json_error();
+			return false;
 		}
-		$posted = json_decode( stripslashes( $_POST['data'] ), true );
+
+		$posted = json_decode( $data['data'], true );
+
 		$scheme_obj->save_scheme( $posted );
 
-		wp_send_json_success();
+		return true;
 	}
 
 	/**
@@ -262,6 +270,13 @@ class Schemes_Manager {
 		}
 	}
 
+	/**
+	 * @since 2.3.0
+	 * @access public
+	 */
+	public function register_ajax_actions( Ajax $ajax ) {
+		$ajax->register_ajax_action( 'apply_scheme', [ $this, 'ajax_apply_scheme' ] );
+	}
 	/**
 	 * Get enabled schemes.
 	 *
@@ -288,13 +303,15 @@ class Schemes_Manager {
 			/**
 			 * Enabled schemes.
 			 *
-			 * Filters the enabled schemes.
+			 * Filters the list of enabled schemes.
 			 *
 			 * @since 1.0.0
 			 *
 			 * @param array $enabled_schemes The list of enabled schemes.
 			 */
-			self::$_enabled_schemes = apply_filters( 'elementor/schemes/enabled_schemes', $enabled_schemes );
+			$enabled_schemes = apply_filters( 'elementor/schemes/enabled_schemes', $enabled_schemes );
+
+			self::$_enabled_schemes = $enabled_schemes;
 		}
 		return self::$_enabled_schemes;
 	}
@@ -304,7 +321,7 @@ class Schemes_Manager {
 	 *
 	 * Add a default schemes to the register schemes list.
 	 *
-	 * This methode is used to set initial schemes when initializing the class.
+	 * This method is used to set initial schemes when initializing the class.
 	 *
 	 * @since 1.7.12
 	 * @access private
@@ -326,6 +343,6 @@ class Schemes_Manager {
 	public function __construct() {
 		$this->register_default_schemes();
 
-		add_action( 'wp_ajax_elementor_apply_scheme', [ $this, 'ajax_apply_scheme' ] );
+		add_action( 'elementor/ajax/register_actions', [ $this, 'register_ajax_actions' ] );
 	}
 }

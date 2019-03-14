@@ -6,18 +6,15 @@ Plugin URI: http://wordpress.org/plugins/carousel-horizontal-posts-content-slide
 Donate link:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXBCGCKDD74UE
 Tags: posts slider, post slider, custom post type slider, posts content slider,Horizontal Wordpress Slider, Carousel Slider, Image Horizontal Slider, Wordpress Horizontal Posts slider, Horizontal content slider, Wordpress slider, Horizontal posts content slider, responsive post slider, responsive posts content slider, vertical slider, post carousel, posts carousel, caroufredsel,page carousel,pages slider,page,slider,carousel,post content slider,post type slider,custom post type,portfolio slider,wordpress post slider,wp slider,carousel,responsive post slider,responsive posts content slider,responsive page slider,post-page slider,post page slider,post, posts slider,post slider,pages content slider, featured image slider, featured image carousel, thumbnail image, thumbnail, banner rotator, testimonial scroller,image ticker,recent post slider,responsive carousel,logo scroller,news slider,best posts content slider, best post slider, advance post slider,logo scroller,featured posts slider, company logo slider, wordpress post slider,related posts slider, related posts, most viewed posts, newest posts slider, related posts carousel,custom post type slider, any post type slider, wp post slider
 Requires at least: 3.6
-Tested up to: 4.9.1
-Stable tag: 3.2.6
+Tested up to: 5.1
+Stable tag: 3.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
 A simple horizontal posts content slider plugin.
 
 == Description ==
-Carousel horizontal posts content slider is a jQuery powered and carouFredsel library based slider. It allows you to showcase your posts in a nice sliding manner.  It has plenty of user-friendly options to configure the slider easily.
-
-[__Buy premium__](https://weaveapps.com/shop/wordpress-plugins/carousel-horizontal-posts-slider-wordpress-plugin/)
-
+Carousel horizontal posts content slider is a jQuery powered and carouFredsel library based slider. It allows you to showcase your posts in a nice sliding manner. 
 
 = Features of this plugin =
 *   Responsive and mobile friendly.
@@ -34,14 +31,8 @@ Carousel horizontal posts content slider is a jQuery powered and carouFredsel li
 *   User can set the items "Dimension: (width or height)
 *   Support all browsers: Firefox, Chrome, IE, Safari etc.
 
-= Translations =
-pt_BR by mauro.mascarenhas.
-
 = Carousel Posts Content Slider - Pro =
-
-[__See the live demo__](http://chpcs.weaveapps.com/carousel-posts-slider-wordpress-plugin-demo/)
-[__Admin panel overview__](https://www.youtube.com/watch?v=iIAO6AiFNdQ)
-
+(Please, click [__here__](https://weaveapps.com/shop/wordpress-plugins/carousel-horizontal-posts-slider-wordpress-plugin/) to check the pro version.)
 
 = Features of the pro plugin =
 * Fully responsive and mobile friendly.

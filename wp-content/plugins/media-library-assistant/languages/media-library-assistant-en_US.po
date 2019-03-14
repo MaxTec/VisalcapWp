@@ -1,9 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Media Library Assistant\n"
-"POT-Creation-Date: 2017-11-29 16:08-0800\n"
-"PO-Revision-Date: 2017-11-29 16:09-0800\n"
+"POT-Creation-Date: 2019-01-01 17:31-0800\n"
+"PO-Revision-Date: 2019-01-01 17:32-0800\n"
+"Last-Translator: David Lingren <dlingren@comcast.net>\n"
 "Language-Team: David Lingren <david@fairtradejudaica.org>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,11 +15,44 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Last-Translator: David Lingren <dlingren@comcast.net>\n"
-"Language: en_US\n"
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: tests\n"
 "X-Poedit-SearchPath-2: index.php\n"
+
+msgid "Draft"
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
+msgctxt "post state"
+msgid "Pending"
+msgstr ""
+
+msgid "Trash"
+msgstr ""
+
+msgid "NO REFERENCE TESTS"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "PARENT"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "(Private post)"
+msgstr ""
+
+msgid "Y/m/d"
+msgstr ""
+
+msgctxt "table_view_singular"
+msgid "Unattached"
+msgstr ""
 
 msgid "Media Library Assistant"
 msgstr ""
@@ -43,16 +78,7 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-msgid "Scheduled"
-msgstr ""
-
 msgid "Pending Review"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Y/m/d"
 msgstr ""
 
 msgid "ERROR"
@@ -92,9 +118,6 @@ msgid "Featured in"
 msgstr ""
 
 msgid "Enabled"
-msgstr ""
-
-msgid "Disabled"
 msgstr ""
 
 msgid "Search database posts and pages for Featured Image attachments."
@@ -191,8 +214,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Check the \"<strong>Checked On Top</strong>\" box to moved checked terms to "
+"Check the \"<strong>Checked On Top</strong>\" box to move checked terms to "
 "the top of the checklist-style meta box."
+msgstr ""
+
+msgid ""
+"Check the \"<strong>Inline Add Term</strong>\" box to support adding terms "
+"in the Quick Edit and Bulk Edit areas."
 msgstr ""
 
 msgid ""
@@ -255,9 +283,6 @@ msgstr ""
 msgid "Order By"
 msgstr ""
 
-msgid "None"
-msgstr ""
-
 msgid "ID/Parent"
 msgstr ""
 
@@ -274,6 +299,12 @@ msgid "Descending"
 msgstr ""
 
 msgid "Choose the sort order."
+msgstr ""
+
+msgid "Entries per page"
+msgstr ""
+
+msgid "Enter the number of Media/Assistant submenu table items per page."
 msgstr ""
 
 msgid "Views Width"
@@ -747,6 +778,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Uploaded on"
+msgstr ""
+
 msgid "Enable View and Post MIME Type Support"
 msgstr ""
 
@@ -830,10 +864,6 @@ msgctxt "post_mime_types_description"
 msgid "All application subtypes"
 msgstr ""
 
-msgctxt "table_view_singular"
-msgid "Unattached"
-msgstr ""
-
 msgctxt "table_view_plural"
 msgid "Unattached"
 msgstr ""
@@ -886,7 +916,9 @@ msgstr ""
 
 msgid ""
 "Enter the name of an alternate, MLA-specific debug log file; leave blank to "
-"use the PHP error_log."
+"use the PHP error_log.<br>&nbsp;&nbsp;The WP_CONTENT_DIR value (below) will "
+"be prepended to the value here, e.g., enter something like \"/uploads/mla.log"
+"\"."
 msgstr ""
 
 msgid "Replace PHP error_log file"
@@ -1103,9 +1135,6 @@ msgctxt "error_log"
 msgid "%1$s: mla_query_posts_clauses_request_filter = \"%2$s\"."
 msgstr ""
 
-msgid "NO REFERENCE TESTS"
-msgstr ""
-
 msgid "ORPHAN"
 msgstr ""
 
@@ -1313,10 +1342,20 @@ msgstr ""
 msgid "An ajax.done error has occurred. Please reload the page and try again."
 msgstr ""
 
-msgid "more"
+#, php-format
+msgid "Uploaded on: %s"
 msgstr ""
 
-msgid "less"
+msgid "Last modified"
+msgstr ""
+
+msgid "+&nbsp;Add&nbsp;New&nbsp;Term"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "?&nbsp;Search"
 msgstr ""
 
 msgid "Add"
@@ -1363,10 +1402,45 @@ msgstr ""
 msgid "IPTC/EXIF mapping is disabled."
 msgstr ""
 
-msgid "M j, Y @ G:i"
+msgid "Month"
 msgstr ""
 
-msgid "Last modified"
+#, php-format
+msgid "%1$s-%2$s"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Hour"
+msgstr ""
+
+msgid "Minute"
+msgstr ""
+
+#, php-format
+msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "M j, Y @ H:i"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit upload date and time"
+msgstr ""
+
+msgid "Upload Date and time"
 msgstr ""
 
 msgid "Map Custom Field metadata for this item"
@@ -1392,17 +1466,10 @@ msgctxt "error_log"
 msgid "%1$s: %2$s discarding \"%3$s\"; no title/order"
 msgstr ""
 
-msgctxt "post state"
-msgid "Pending"
-msgstr ""
-
 msgid "Post Parent"
 msgstr ""
 
 msgid "Select Parent"
-msgstr ""
-
-msgid "PARENT"
 msgstr ""
 
 msgid "All"
@@ -1423,12 +1490,6 @@ msgstr ""
 
 #, php-format
 msgid "column_default: %1$s, %2$s"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Trash"
 msgstr ""
 
 msgid "Restore this item from the Trash"
@@ -1485,9 +1546,6 @@ msgstr ""
 
 #, php-format
 msgid "%1$s ago"
-msgstr ""
-
-msgid "(Private post)"
 msgstr ""
 
 msgid "Set Parent"
@@ -1548,7 +1606,13 @@ msgstr[1] ""
 msgid "Item %1$d moved to Trash."
 msgstr ""
 
-msgid "Entries per page"
+msgid "download path out of bounds."
+msgstr ""
+
+msgid "download path invalid."
+msgstr ""
+
+msgid "download argument(s) not set."
 msgstr ""
 
 msgid "You are not allowed to edit Attachment: "
@@ -1604,9 +1668,6 @@ msgid "For"
 msgstr ""
 
 msgid "Unattached"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "Bulk Edit"
@@ -2005,6 +2066,9 @@ msgstr ""
 msgid "Checked On Top"
 msgstr ""
 
+msgid "Inline Add Term"
+msgstr ""
+
 msgid "List Filter"
 msgstr ""
 
@@ -2029,6 +2093,10 @@ msgstr ""
 
 #, php-format
 msgid "Checked On Top ignored; %1$s not supported."
+msgstr ""
+
+#, php-format
+msgid "Inline Add Term ignored; %1$s not supported."
 msgstr ""
 
 #, php-format
@@ -2741,6 +2809,9 @@ msgstr ""
 msgid "EXIF element name or Content Template"
 msgstr ""
 
+msgid " (starting with \"template:\")"
+msgstr ""
+
 msgid "IPTC"
 msgstr ""
 
@@ -3269,6 +3340,9 @@ msgstr ""
 msgid "Plugins per page"
 msgstr ""
 
+msgid "Guide"
+msgstr ""
+
 #, php-format
 msgctxt "error_log"
 msgid "%1$s: %2$s unknown type = \"%3$s\""
@@ -3316,26 +3390,6 @@ msgid "Media Manager Enhancements"
 msgstr ""
 
 msgid "Delete General options and restore default settings"
-msgstr ""
-
-msgid "Support Our Work"
-msgstr ""
-
-msgid "Donate to FTJ"
-msgstr ""
-
-msgid "Donate"
-msgstr ""
-
-#, php-format
-msgid ""
-"This plugin was inspired by my work on the WordPress web site for our "
-"nonprofit, Fair Trade Judaica. If you find the Media Library Assistant "
-"plugin useful and would like to support a great cause, consider a %1$s to "
-"our work. Thank you!"
-msgstr ""
-
-msgid "tax-deductible donation"
 msgstr ""
 
 msgid "enhanced version of the WordPress [gallery] shortcode."
@@ -3547,6 +3601,12 @@ msgid "mla_debug query_vars"
 msgstr ""
 
 msgid "mla_debug post_count"
+msgstr ""
+
+msgid "mla_debug JOIN filter"
+msgstr ""
+
+msgid "mla_debug modified JOIN filter"
 msgstr ""
 
 msgid "mla_debug WHERE filter"

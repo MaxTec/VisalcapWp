@@ -3,7 +3,7 @@
 Plugin Name: Carousel Horizontal Posts Content Slider
 Description: A simple horizontal posts content slider plugin.
 Author: subhansanjaya
-Version: 3.2.6
+Version: 3.2.7
 Plugin URI: http://wordpress.org/plugins/carousel-horizontal-posts-content-slider/
 Author URI: http://www.weaveapps.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXBCGCKDD74UE
@@ -253,50 +253,48 @@ class CHPCS {
 
 	$image_size= $this->options['settings']['image_size'];
 
-	?>
-	<style>
+	$slider_gallery = '';
 
-	<?php if(!empty($custom_css)) { echo $custom_css;  } ?>
+	$slider_gallery .= '<style>';
 
-	.chpcs_foo_content img {
+	if(!empty($custom_css)) { $slider_gallery .= $custom_css;  } 
 
-		max-width: <?php echo $item_width;?>px;
+	$slider_gallery .= '.chpcs_foo_content img {
+
+		max-width: '.$item_width.'px;
 	}
 
 			.chpcs_image_carousel .chpcs_prev, .chpcs_image_carousel .chpcs_next{
 
-			background: <?php echo $arrows_bg_colour; ?>;
+			background: '.$arrows_bg_colour.';
 
-			color: <?php echo $arrows_colour; ?>;
+			color: '.$arrows_colour.';
 
-			font-size: <?php echo $size_of_direction_arrows; ?>px;
+			font-size: '.$size_of_direction_arrows.'px;
 
-			line-height: <?php echo $size_of_direction_arrows+7;?>px;
+			line-height: '.$size_of_direction_arrows.'+7px;
 
-			width: <?php echo $size_of_direction_arrows+10;?>px;
+			width: '.$size_of_direction_arrows.'+10px;
 
-			height: <?php echo $size_of_direction_arrows+10;?>px;
+			height: '.$size_of_direction_arrows.'+10px;
 
-			margin-top: -<?php echo $size_of_direction_arrows; ?>px;
+			margin-top: -'.$size_of_direction_arrows.'px;
 
 		}
 
 		.chpcs_image_carousel.chpcs_prev:hover, .chpcs_image_carousel .chpcs_next:hover {
 
-			color: <?php echo $arrows_hover_colour;?>;
+			color: '.$arrows_hover_colour.';
 
 		}
 
 		#wa_chpcs_pager a {
 
-			background: <?php echo $arrows_hover_colour; ?>;
+			background: '.$arrows_hover_colour.';
 
-		}
+		}';
 
-	</style>
-
-	<?php
-	$slider_gallery = '';
+	$slider_gallery .=  '</style>';
 
 	$slider_gallery.= '<div class="chpcs_image_carousel">';
 
@@ -378,7 +376,7 @@ class CHPCS {
 	}
 	$slider_gallery.='</div>';
 
-	wp_reset_postdata();
+	//wp_reset_postdata();
 
 	return $slider_gallery;
 
@@ -1170,7 +1168,7 @@ class CHPCS {
 	public function options_page() {
 
 		$tab_key = (isset($_GET['tab']) ? $_GET['tab'] : 'general-settings');
-		echo '<div class="wrap">'.screen_icon().'
+		echo '<div class="wrap">
 			<h2>'.__('Carousel horizontal posts content slider', 'wa-chpcs-txt').'</h2>
 			<h2 class="nav-tab-wrapper">';
 

@@ -168,12 +168,32 @@ function seed_csp4_head() {
 
 
     <?php if ( !empty( $link_color ) ) { ?>
-		.seed-csp4 a, .seed-csp4 a:visited, .seed-csp4 a:hover, .seed-csp4 a:active{
+		.seed-csp4 a, .seed-csp4 a:visited, .seed-csp4 a:hover, .seed-csp4 a:active, .seed-csp4 a:focus{
 			color:<?php echo $link_color;?>;
 		}
 
 
-    <?php }
+    <?php } ?>
+
+    
+    <?php if ( !empty( $bg_image ) ): ;?>
+    	<?php if ( isset( $bg_cover ) && in_array( '1', $bg_cover ) ) : ?>
+	@supports (-webkit-overflow-scrolling: touch) {
+		html {
+		height: 100%;
+		overflow: hidden;
+		}
+		body
+		{
+		height:100%;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		}
+	}
+		<?php endif; ?>
+	<?php endif; ?>
+
+    <?php 
 
 	$output .= ob_get_clean();
 
@@ -191,9 +211,8 @@ function seed_csp4_head() {
 	if ( empty( $enable_wp_head_footer ) ) {
 		$output .= '<script src="'.$include_url.'js/jquery/jquery.js"></script>'."\n";
 	}
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.min.js"></script>'."\n";
 
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/script.js"></script>'."\n";
 
 
 	// Header Scripts
@@ -208,9 +227,6 @@ function seed_csp4_head() {
 		$output .= $ga_analytics;
 	}
 
-	// Modernizr
-	$output .= "<!-- Modernizr -->\n";
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/modernizr.min.js"></script>'."\n";
 
 	return $output;
 }
@@ -313,3 +329,4 @@ function seed_csp4_credit() {
 
 	return  $output;
 }
+
