@@ -1,0 +1,328 @@
+# Translation of Plugins - WC &#8211; APG Weight Shipping - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - WC &#8211; APG Weight Shipping - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-01-30 11:53:36+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - WC &#8211; APG Weight Shipping - Stable (latest release)\n"
+
+#. Plugin Name of the plugin/theme
+msgid "WC - APG Weight Shipping"
+msgstr "WC - APG Envío por peso"
+
+#: includes/admin/campos.php:171
+msgid "Displays the variables sent to the function dame_tarifa_mas_barata."
+msgstr "Muestra las variables enviadas a la función dame_tarifa_mas_barata."
+
+#: includes/admin/campos.php:170
+msgid "Check if you want to show debug information on the cart page."
+msgstr "Márcalo si quieres mostrar la información de depuración en la página del carro."
+
+#: includes/admin/campos.php:168
+msgid "Show debug information?"
+msgstr "¿Mostrar información de depuración?"
+
+#. Author URI of the plugin/theme
+msgid "https://artprojectgroup.es/"
+msgstr "https://artprojectgroup.es/"
+
+#. Author of the plugin/theme
+msgid "Art Project Group"
+msgstr "Art Project Group"
+
+#. Description of the plugin/theme
+msgid "Add to WooCommerce the calculation of shipping costs based on the order weight and postcode, province (state) and country of customer's address. Lets you add an unlimited shipping rates. Created from <a href=\"https://profiles.wordpress.org/andy_p/\" target=\"_blank\">Andy_P</a> <a href=\"https://wordpress.org/plugins/awd-weightcountry-shipping/\" target=\"_blank\"><strong>AWD Weight/Country Shipping</strong></a> plugin and the modification of <a href=\"https://wordpress.org/support/profile/mantish\" target=\"_blank\">Mantish</a> published in <a href=\"https://gist.github.com/Mantish/5658280\" target=\"_blank\">GitHub</a>."
+msgstr "Añade a WooCommerce el cálculo de gastos de envío basados en el peso del pedido y el código postal, provincia (estado) y país de la dirección del cliente. Te permite añadir un número ilimitado de tarifas de envío. Creado a partir del plugin <a href=\"https://wordpress.org/plugins/awd-weightcountry-shipping/\" target=\"_blank\"><strong>AWD Weight/Country Shipping</strong></a> de <a href=\"https://profiles.wordpress.org/andy_p/\" target=\"_blank\">Andy_P</a> y de la modificación de <a href=\"https://wordpress.org/support/profile/mantish\" target=\"_blank\">Mantish</a> publicada en <a href=\"http://gist.github.com/Mantish/5658280\" target=\"_blank\">GitHub</a>."
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/woocommerce-apg-weight-and-postcodestatecountry-shipping/"
+msgstr "https://wordpress.org/plugins/woocommerce-apg-weight-and-postcodestatecountry-shipping/"
+
+#: includes/cuadro-informacion.php:37
+msgid "Documentation and Support:"
+msgstr "Documentación y ayuda:"
+
+#: includes/cuadro-informacion.php:31
+msgid "Contact with us:"
+msgstr "Contacta con nosotros:"
+
+#: includes/cuadro-informacion.php:23
+msgid "More plugins:"
+msgstr "Más plugins:"
+
+#: includes/cuadro-informacion.php:17
+msgid "Follow us:"
+msgstr "Síguenos:"
+
+#: includes/cuadro-informacion.php:5
+msgid "If you enjoyed and find helpful this plugin, please make a donation:"
+msgstr "Si te ha gustado y resultado útil este plugin, por favor, haz una donación:"
+
+#: includes/admin/campos.php:163
+msgid "Define estimation for delivery time for this shipping method."
+msgstr "Indica el tiempo estimado de entrega para este método de envío."
+
+#: includes/admin/campos.php:161
+msgid "Estimated delivery time"
+msgstr "Tiempo de entrega estimado"
+
+#: includes/admin/campos.php:157
+msgid "No title, just icon"
+msgstr "Sin título, sólo imagen"
+
+#: includes/admin/campos.php:156
+msgid "After title"
+msgstr "Detrás del título"
+
+#: includes/admin/campos.php:155
+msgid "Before title"
+msgstr "Antes del título"
+
+#: includes/admin/campos.php:154
+msgid "Not show, just title"
+msgstr "No mostrar, sólo el título"
+
+#: includes/admin/campos.php:150
+msgid "Select how you want to show the icon image."
+msgstr "Selecciona cómo quieres que se vea la imagen personalizada."
+
+#: includes/admin/campos.php:149
+msgid "How show icon image?"
+msgstr "¿Cómo mostrar la imagen?"
+
+#: includes/admin/campos.php:144
+msgid "Icon image URL. APG recommends a 60x21px image."
+msgstr "URL de la imagen personalizada. APG recomienda una imagen de 60x21px."
+
+#: includes/admin/campos.php:142
+msgid "Icon image"
+msgstr "Imagen personalizada"
+
+#: includes/admin/campos.php:138
+msgid "All enabled payments"
+msgstr "Todos los pagos activos"
+
+#: includes/admin/campos.php:130
+msgid "Payment gateway available for %s"
+msgstr "Pasarela de pago disponible para %s"
+
+#: includes/admin/campos.php:129
+msgid "Payment gateway"
+msgstr "Pasarela de pago"
+
+#: includes/admin/campos.php:116
+msgid "Guest"
+msgstr "Invitado"
+
+#: includes/admin/campos.php:110
+msgid "Select the user role where %s doesn't accept shippings."
+msgstr "Selecciona el perfil de usuario donde %s no aceptará envíos."
+
+#: includes/admin/campos.php:109
+msgid "No shipping (User role)"
+msgstr "Sin envíos (perfil de usuario)"
+
+#: includes/admin/campos.php:95
+msgid "All enabled shipping class"
+msgstr "Todas las clases de envío activas"
+
+#: includes/admin/campos.php:89
+msgid "Select the shipping class where %s doesn't accept shippings."
+msgstr "Selecciona las clases de envíos donde %s no aceptarán envíos."
+
+#: includes/admin/campos.php:88
+msgid "No shipping (Shipping class)"
+msgstr "Sin envíos (clase de envío)"
+
+#: includes/admin/campos.php:82
+msgid "Return the maximum price."
+msgstr "Mostrar el precio máximo."
+
+#: includes/admin/campos.php:80
+msgid "Overweight/over dimensions"
+msgstr "Exceso de peso/dimensiones"
+
+#: includes/admin/campos.php:76
+msgid "Select if you need just the highest shipping class rate not the sum of shipping classes rates."
+msgstr "Selecciona si necesitas sólo la tarifa de clase de envío más cara en lugar de la suma de las tarifas de las clases de envío."
+
+#: includes/admin/campos.php:74
+msgid "Highest shipping class rate"
+msgstr "Clase de envío más alta"
+
+#: includes/admin/campos.php:71
+msgid "Total weight: Apply shipping rate per cart weight (default).<br />Total items: Apply shipping rate per number of items.<br />Cart total: Apply shipping rate per cart total."
+msgstr "Peso total: Aplica la tarifa de envío por el peso del pedido (predeterminado).<br />Productos totales: Aplica la tarifa de envío por el número de productos.<br />Total del pedido: Aplica la tarifa de envío por el total del pedido."
+
+#: includes/admin/campos.php:69
+msgid "Cart total"
+msgstr "Total del carrito"
+
+#: includes/admin/campos.php:68
+msgid "Total items"
+msgstr "Productos totales"
+
+#: includes/admin/campos.php:67
+msgid "Total weight"
+msgstr "Peso total"
+
+#: includes/admin/campos.php:64
+msgid "Select how to apply the shipping rate: per weight, items or cart total."
+msgstr "Selecciona como quieres que se apliquen las tarifas de envío: por peso, productos o total del pedido."
+
+#: includes/admin/campos.php:62
+msgid "Apply shipping rate per..."
+msgstr "Aplicar tarifa de envío por..."
+
+#: includes/admin/campos.php:59
+msgid "Remember your weight unit: %s, and dimensions unit: %s."
+msgstr "Recuerda la unidad de peso: %s, y la unidad de medida: %s."
+
+#: includes/admin/campos.php:59
+msgid "Remember your shipping class name: "
+msgstr "Recuerda los nombres de tus clases de envío:"
+
+#: includes/admin/campos.php:56
+msgid "Set your weight based rates for postcode/state/country groups (one per line). You may optionally add the maximum dimensions, e.g. <code>Max weight|Cost|Shipping class name (optional)|LxWxH (optional)</code>. Also you can set your dimensions based rates, e.g. <code>LxWxH|Cost|Shipping class name (optional)</code>."
+msgstr "Añade tus tarifas basadas en el peso para grupos código postal/provincia (estado)/país (uno por línea). Opcional puedes añadir dimensiones máximas, por ejemplo <code>Peso máximo|Tarifa|Nombre de Clase de envío (opcional)|LxWxH (opcional)</code>. También puedes añadir tarifas basadas en dimensiones, por ejemplo <code>LxWxH|Tarifa|Nombre de Clase de envío (opcional)</code>."
+
+#: includes/admin/campos.php:54
+msgid "Shipping Rates"
+msgstr "Tarifas de envío"
+
+#: includes/admin/campos.php:50
+msgid "To apply additional fee for the number of items."
+msgstr "Para aplicar un coste adicional por el número de productos."
+
+#: includes/admin/campos.php:49
+msgid "Apply additional fee per product."
+msgstr "Aplicar coste adicional por producto."
+
+#: includes/admin/campos.php:47
+msgid "Apply per product?"
+msgstr "¿Aplicar por producto?"
+
+#: includes/admin/campos.php:42
+msgid "Additional fee added to the total cost of items.<br />You can use  <code>min=\"fee\" max=\"fee\"</code> for percentage based fees, e.g. <code>6%|min=\"20.50\" max=\"100\"</code>."
+msgstr "Coste adicional añadido al importe total de productos.<br />Puedes usar <code>min=\"fee\" max=\"fee\"</code> para costes basados en porcentajes, por ejemplo <code>6%|min=\"20.50\" max=\"100\"</code>."
+
+#: includes/admin/campos.php:41
+msgid "Additional fee excluding tax. Enter an amount, e.g. 2.50, or percentage, e.g. 6%. Leave blank to disable."
+msgstr "Introduce un coste adicional por pedido, por ejemplo: 2.50, o un porcentaje, por ejempolo: 6%. Déjalo en blanco para deshabilitarlo."
+
+#: includes/admin/campos.php:39
+msgid "Additional Fee"
+msgstr "Coste adicional"
+
+#: includes/admin/campos.php:34
+msgid "Fee added to the total cost of items."
+msgstr "Coste añadido al importe total de productos."
+
+#: includes/admin/campos.php:33
+msgid "Fee excluding tax. Enter an amount, e.g. 2.50. Leave blank to disable."
+msgstr "Introduce un coste por pedido, por ejemplo: 2.50. Déjalo en blanco para deshabilitarlo."
+
+#: includes/admin/campos.php:31
+msgid "Handling Fee"
+msgstr "Coste de tramitación"
+
+#: includes/admin/campos.php:27
+msgid "None"
+msgstr "Ninguno"
+
+#: includes/admin/campos.php:26
+msgid "Taxable"
+msgstr "Sujeto a impuestos"
+
+#: includes/admin/campos.php:21
+msgid "Tax Status"
+msgstr "Estado de impuestos"
+
+#: includes/admin/campos.php:17
+msgid "This controls the title which the user sees during checkout."
+msgstr "Esto controla el título que el usuario ve durante la finalización de la compra."
+
+#: includes/admin/campos.php:15
+msgid "Method Title"
+msgstr "Título del método"
+
+#: includes/admin/campos.php:11
+msgid "Enable this shipping method"
+msgstr "Activa este método de envío"
+
+#: includes/admin/campos.php:9
+msgid "Enable/Disable"
+msgstr "Activar/Desactivar"
+
+#: includes/admin/funciones-apg.php:109
+msgid "settings"
+msgstr "ajustes"
+
+#: includes/admin/funciones-apg.php:109
+msgid "Please, update your %s. It's very important!"
+msgstr "Por favor, actualiza tus %s. ¡Es muy importante!"
+
+#: includes/admin/funciones-apg.php:102 includes/cuadro-informacion.php:44
+msgid "Please, rate %s:"
+msgstr "Por favor, valora %s:"
+
+#: apg-shipping.php:574
+msgid "This plugin require WooCommerce active to run!"
+msgstr "¡Este plugin necesita WooCommerce activo para funcionar!"
+
+#: apg-shipping.php:563
+msgid "Estimated delivery time: %s"
+msgstr "Tiempo de entrega estimado: %s"
+
+#: apg-shipping.php:115
+msgid "Select a class&hellip;"
+msgstr "Selecciona una clase&hellip;"
+
+#: apg-shipping.php:50
+msgid "Lets you calculate shipping cost based on Postcode/State/Country and weight of the cart. Lets you set an unlimited weight bands on per postcode/state/country basis and group the groups that that share same delivery cost/bands."
+msgstr "Gastos de envío basado en el peso y el código postal/provincia (estado)/país. Permite calcular el gasto de envío basándose en el Código Postal/Provincia (Estado)/País y el peso del carro de la compra. Le permite establecer un número ilimitado de franjas de peso en base al código postal/provincia (estado)/país y agrupar los grupos que comparten el mismo precio/franja de gasto de envío."
+
+#: apg-shipping.php:49 includes/admin/campos.php:18
+msgid "APG Shipping"
+msgstr "Gastos de envío APG"
+
+#: includes/admin/funciones-apg.php:59
+msgid "<h4>ALERT: 2.0 is a major update</h4>It’s important that you make backups of your <strong>WC - APG Weight Shipping</strong> current configuration and configure it again after upgrade.<br /><em>Remember, the current setting is totally incompatible with WooCommerce 2.6 and you'll lose it</em>."
+msgstr "<h4>ALERTA: 2.0 es una actualización importante</h4>Es muy importante que hagas copias de seguridad de la configuración actual de <strong>WC - APG Weight Shipping</strong> y que las vuelvas a configurar tras la actualización.<br /><em>Recuerda que la configuración actual es totalmente incompatible con WooCommerce 2.6 y se perderá</em>."
+
+#: includes/admin/funciones-apg.php:44 includes/cuadro-informacion.php:39
+msgid "Support"
+msgstr "Soporte técnico"
+
+#: includes/admin/funciones-apg.php:44
+msgid "Support of "
+msgstr "Soporte técnico de "
+
+#: includes/admin/funciones-apg.php:43 includes/admin/funciones-apg.php:109
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/admin/funciones-apg.php:43
+msgid "Settings of "
+msgstr "Ajustes de "
+
+#: includes/admin/funciones-apg.php:30 includes/cuadro-informacion.php:33
+msgid "Contact with us by "
+msgstr "Contacta con nosotros por "
+
+#: includes/admin/funciones-apg.php:29 includes/cuadro-informacion.php:25
+msgid "More plugins on "
+msgstr "Más plugins en "
+
+#: includes/admin/funciones-apg.php:28 includes/cuadro-informacion.php:19
+msgid "Follow us on "
+msgstr "Síguenos en "
+
+#: includes/admin/funciones-apg.php:26 includes/cuadro-informacion.php:7
+msgid "Make a donation by "
+msgstr "Haz una donación por "
