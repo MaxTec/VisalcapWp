@@ -18,8 +18,8 @@
  * @package WordPress
  */
 
-define( 'WP_HOME', 'http://localhost/visalcap' );
-define( 'WP_SITEURL', 'http://localhost/visalcap' );
+//define( 'WP_HOME', 'http://localhost/visalcap' );
+//define( 'WP_SITEURL', 'http://localhost/visalcap' );
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'visalcap_wp771');
