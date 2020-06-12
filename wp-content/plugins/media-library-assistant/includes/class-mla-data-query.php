@@ -552,7 +552,7 @@ class MLAQuery {
 					continue;
 				}
 
-				if ( '_' == $post_meta_key{0} ) {
+				if ( '_' == $post_meta_key[0] ) {
 					if ( stripos( $post_meta_key, '_wp_attached_file' ) === 0 ) {
 						$key = 'mla_wp_attached_file';
 						$attached_file = $post_meta_value[0];
@@ -639,6 +639,7 @@ class MLAQuery {
 	 * ['mla_search_fields'] => 'title', 'name', 'alt-text', 'excerpt', 'content', 'file' ,'terms'
 	 * Note: 'alt-text' and 'file' are not supported in [mla_gallery]
 	 * ['mla_search_connector'] => AND/OR
+	 * ['whole_word'] => each word must match as one "keyword", e.g. "man" won't match "woman"
 	 * ['sentence'] => entire string must match as one "keyword"
 	 * ['exact'] => entire string must match entire field value
 	 * ['debug'] => internal element, console/log/shortcode/none
@@ -678,22 +679,23 @@ class MLAQuery {
 	 *
 	 * @uses	array	self::$search_parameters
 	 *
-	 * @param	string	phrases, e.g., ( "a phrase" separate phrase ) without parens, space delimited
+	 * @param	string	whole_string e.g., ( "a phrase" separate phrase ) without parens, space delimited
+	 * @param	string	term_delimiter separator between terms for terms search
+	 * @param	string	negative_delimiter delimiter for negative phrases, e.g., /exclude this/, /"exclude also"/
 	 *
 	 * @return	array	( 'original' => all phrases, 'positive' => positive phrases, 'negative' => negative phrases )
 	 */
-	private static function _divide_search_string( $whole_string ) {
-		$separator = ','; // TODO default value
-		$negative_delimiter = '/'; // TODO default value
+	public static function mla_divide_search_string( $whole_string, $term_delimiter = ',', $negative_delimiter = '/' ) {
 		$phrases = array( 'original' => $whole_string, 'positive' => '', 'negative' => '' );
 		
 		$separator_list = " \n\t\r\0\x0B";
-		if ( false === strpos( $separator_list, $separator ) ) {
-			$separator_list .= $separator;
+		if ( false === strpos( $separator_list, $term_delimiter ) ) {
+			$separator_list .= $term_delimiter;
 		} else {
 			$separator_list .= ',';
 		}
 
+		$negative_prepend = false;
 		$in_negative = false;
 		$current_quote = '';
 		$in_trim = false;
@@ -703,21 +705,27 @@ class MLAQuery {
 		
 		while ( $index < strlen( $whole_string ) ) {
 			$byte = $whole_string[ $index++ ];
-//error_log( __LINE__ . " MLAQuery::_divide_search_string byte |{$byte}| in_trim |{$in_trim}| in_negative |{$in_negative}| current_quote |{$current_quote}| current_separator |{$current_separator}| argument |{$argument}| phrases = " . var_export( $phrases, true ), 0 );
+//error_log( __LINE__ . " MLAQuery::mla_divide_search_string byte |{$byte}| in_trim |{$in_trim}| in_negative |{$in_negative}| current_quote |{$current_quote}| current_separator |{$current_separator}| argument |{$argument}| phrases = " . var_export( $phrases, true ), 0 );
 
 			// Are we between arguments?
 			if ( ( false !== strpos( $separator_list, $byte ) ) && !( $in_negative || $current_quote ) ) {
 				$in_trim = true;
 
-				if ( $separator === $byte ) {
-					$current_separator = $separator;
+				if ( $term_delimiter === $byte ) {
+					$current_separator = $term_delimiter;
 				}
 				
 				continue;
 			} elseif ( $in_trim ) {
 				// Have we seen a positive argument?
 				if ( strlen( $argument ) ) {
-					$phrases['positive'] .= $argument;
+					if ( $negative_prepend ) {
+						$phrases['negative'] .= $argument;
+						$negative_prepend = false;
+					} else {
+						$phrases['positive'] .= $argument;
+					}
+					
 					$argument = '';
 				}
 
@@ -737,6 +745,7 @@ class MLAQuery {
 			if ( $in_negative && ( $negative_delimiter == $byte ) ) {
 				if ( strlen( $argument ) ) {
 					$phrases['negative'] .= $argument;
+					$negative_prepend = false; // handle double-delimiting, i.e., -/phrase/
 					$argument = '';
 				}
 
@@ -750,7 +759,12 @@ class MLAQuery {
 					if ( $in_negative ) {
 						$phrases['negative'] .= $current_quote . $argument . $current_quote;
 					} else {
-						$phrases['positive'] .= $current_quote . $argument . $current_quote;
+						if ( $negative_prepend ) {
+							$phrases['negative'] .= $current_quote . $argument . $current_quote;
+							$negative_prepend = false;
+						} else {
+							$phrases['positive'] .= $current_quote . $argument . $current_quote;
+						}
 					}
 
 					$argument = '';
@@ -763,7 +777,12 @@ class MLAQuery {
 			// Are we starting a negative phrase?
 			if ( ( $negative_delimiter == $byte ) && !$current_quote ) {
 				if ( strlen( $argument ) ) {
-					$phrases['positive'] .= $argument;
+					if ( $negative_prepend ) {
+						$phrases['negative'] .= $argument;
+						$negative_prepend = false;
+					} else {
+						$phrases['positive'] .= $argument;
+					}
 					$argument = '';
 				}
 
@@ -777,21 +796,27 @@ class MLAQuery {
 				continue;
 			}
 			
-			// Accumulate a phrase
-			$argument .= $byte;
+			// Look for prepended "-" as added to WP_Query in WP 4.4
+			if ( !$current_quote && empty( $argument ) && '-' === $byte ) {
+				$negative_prepend = true;
+			} else {
+				// Accumulate a phrase
+				$argument .= $byte;
+			}
 		} // index < strlen
 
 		// Close out the final argument
 		if ( strlen( $argument ) ) {
-			// Restore quotes for word-boundary check
-			$phrases['positive'] .= $argument;
+			if ( $negative_prepend ) {
+				$phrases['negative'] .= $argument;
+			} else {
+				$phrases['positive'] .= $argument;
+			}
 		}
-		
-//error_log( __LINE__ . ' MLAQuery::_divide_search_string phrases = ' . var_export( $phrases, true ), 0 );
+//error_log( __LINE__ . ' MLAQuery::mla_divide_search_string phrases = ' . var_export( $phrases, true ), 0 );
 
 		return $phrases;
-		return array( 'original' => 'america /statue/', 'positive' => 'america', 'negative' => 'statue' );
-	} // _divide_search_string
+	} // mla_divide_search_string
 
 	/**
 	 * Sanitize and expand query arguments from request variables
@@ -808,6 +833,7 @@ class MLAQuery {
 	 * @return	array	revised arguments suitable for WP_Query
 	 */
 	private static function _prepare_list_table_query( $raw_request, $offset = 0, $count = 0 ) {
+//error_log( __LINE__ . " _prepare_list_table_query( $offset, $count ) raw_request = " . var_export( $raw_request, true ), 0 );
 		/*
 		 * Go through the $raw_request, take only the arguments that are used in the query and
 		 * sanitize or validate them.
@@ -859,9 +885,10 @@ class MLAQuery {
 		foreach ( $raw_request as $key => $value ) {
 			switch ( $key ) {
 				/*
-				 * 'sentence' and 'exact' modify the keyword search ('s')
+				 * 'whole_word', 'sentence' and 'exact' modify the keyword search ('s')
 				 * Their value is not important, only their presence.
 				 */
+				case 'whole_word':
 				case 'sentence':
 				case 'exact':
 				case 'mla-tax':
@@ -1078,6 +1105,7 @@ class MLAQuery {
 			self::$search_parameters['s'] = $clean_request['s'];
 			self::$search_parameters['mla_search_fields'] = apply_filters( 'mla_list_table_search_filter_fields', $clean_request['mla_search_fields'], array( 'title', 'name', 'alt-text', 'excerpt', 'content', 'file' ,'terms' ) );
 			self::$search_parameters['mla_search_connector'] = $clean_request['mla_search_connector'];
+			self::$search_parameters['whole_word'] = isset( $clean_request['whole_word'] );
 			self::$search_parameters['sentence'] = isset( $clean_request['sentence'] );
 			self::$search_parameters['exact'] = isset( $clean_request['exact'] );
 
@@ -1096,6 +1124,7 @@ class MLAQuery {
 			unset( $clean_request['s'] );
 			unset( $clean_request['mla_search_connector'] );
 			unset( $clean_request['mla_search_fields'] );
+			unset( $clean_request['whole_word'] );
 			unset( $clean_request['sentence'] );
 			unset( $clean_request['exact'] );
 		}
@@ -1215,7 +1244,7 @@ class MLAQuery {
 		} // isset mla_tax
 		
 		if ( !empty( self::$search_parameters['s'] ) ) {
-			$search_phrases = self::_divide_search_string( self::$search_parameters['s'] );
+			$search_phrases = self::mla_divide_search_string( self::$search_parameters['s'] );
 //error_log( __LINE__ . " MLAQuery::_prepare_list_table_query search_phrases = " . var_export( $search_phrases, true ), 0 );
 		
 			if ( !empty( $search_phrases['negative'] ) ) {
@@ -1233,8 +1262,10 @@ class MLAQuery {
 //error_log( __LINE__ . " MLAQuery::_prepare_list_table_query search_parameters = " . var_export( self::$search_parameters, true ), 0 );
 
 		if ( !empty( self::$search_parameters['mla_terms_search'] ) ) {
-			$search_phrases = self::_divide_search_string( self::$search_parameters['mla_terms_search']['phrases'] );
+			$search_phrases = self::mla_divide_search_string( self::$search_parameters['mla_terms_search']['phrases'] );
 //error_log( __LINE__ . " MLAQuery::_prepare_list_table_query mla_terms_search search_phrases = " . var_export( $search_phrases, true ), 0 );
+//error_log( __LINE__ . " MLAQuery::_prepare_list_table_query clean_request = " . var_export( $clean_request, true ), 0 );
+//error_log( __LINE__ . " MLAQuery::_prepare_list_table_query search_parameters = " . var_export( self::$search_parameters, true ), 0 );
 		
 			if ( !empty( $search_phrases['negative'] ) ) {
 				self::$search_parameters['mla_terms_search']['phrases'] = $search_phrases['negative'];
@@ -1510,6 +1541,7 @@ class MLAQuery {
 	 * @return	integer	Taxonomy JOIN clauses required. Updates $tax_clause as well
 	 */
 	private static function _generate_tax_clause( $terms_search_parameters, &$tax_clause ) {
+//error_log( __LINE__ . ' MLAQuery::_generate_tax_clause self::search_parameters = ' . var_export( self::$search_parameters, true ), 0 );
 //error_log( __LINE__ . ' MLAQuery::_generate_tax_clause terms_search_parameters = ' . var_export( $terms_search_parameters, true ), 0 );
 		$term_delimiter = isset( $terms_search_parameters['term_delimiter'] ) ? $terms_search_parameters['term_delimiter'] : ',';
 		$phrase_delimiter = isset( $terms_search_parameters['phrase_delimiter'] ) ? $terms_search_parameters['phrase_delimiter'] : ' ';
@@ -1527,13 +1559,23 @@ class MLAQuery {
 		$matched_terms = 0;
 		foreach ( $terms as $term ) {
 
+			// Sentence puts quotes around the entire term
+			if ( !empty( $terms_search_parameters['sentence'] ) ) {
+				$term = '"' . str_replace( array( '"', "'" ), '', $term ) . '"';
+			}
+//error_log( __LINE__ . " MLAQuery::_generate_tax_clause terms_search_parameters term = " . var_export( $term, true ), 0 );
+
 			// Find the quoted phrases for a word-boundary check
 			$phrases = self::_parse_terms_search( $term, $phrase_delimiter, false );
 //error_log( __LINE__ . " MLAQuery::_generate_tax_clause terms_search_parameters( {$term} ) phrases = " . var_export( $phrases, true ), 0 );
 			$quoted = array();
 			foreach ( $phrases as $index => $phrase ) {
-				$delimiter = substr( $phrase, 0, 1 );
-				$quoted[ $index ] = ( '"' == $delimiter ) || ( "'" == $delimiter );
+				if ( empty( $terms_search_parameters['whole_word'] ) ) {
+					$delimiter = substr( $phrase, 0, 1 );
+					$quoted[ $index ] = ( '"' == $delimiter ) || ( "'" == $delimiter );
+				} else {
+					$quoted[ $index ] = true;
+				}
 			}
 //error_log( __LINE__ . " MLAQuery::_generate_tax_clause terms_search_parameters( {$term} ) quoted = " . var_export( $quoted, true ), 0 );
 
@@ -1544,7 +1586,7 @@ class MLAQuery {
 			$tax_terms = array();
 			$tax_counts = array();
 			foreach ( $phrases as $index => $phrase ) {
-				if ( isset( $terms_search_parameters['exact'] ) ) {
+				if ( !empty( $terms_search_parameters['exact'] ) ) {
 					$the_terms = array();
 					foreach( $terms_search_parameters['taxonomies'] as $taxonomy ) {
 						// WordPress encodes special characters, e.g., "&" as HTML entities in term names
@@ -1675,6 +1717,8 @@ class MLAQuery {
 //error_log( __LINE__ . " MLAQuery::mla_query_posts_search_filter search_parameters = " . var_export( self::$search_parameters, true ), 0 );
 		// Process the Terms Search arguments, if present.
 		if ( isset( self::$search_parameters['mla_terms_search']['phrases'] ) ) {
+//error_log( __LINE__ . " MLAQuery::mla_query_posts_search_filter search_string = " . var_export( $search_string, true ), 0 );
+//error_log( __LINE__ . " MLAQuery::mla_query_posts_search_filter search_parameters = " . var_export( self::$search_parameters, true ), 0 );
 			self::$search_parameters['tax_terms_count'] = self::_generate_tax_clause( self::$search_parameters['mla_terms_search'], $tax_clause );
 //error_log( __LINE__ . " MLAQuery::mla_query_posts_search_filter tax_clause = " . var_export( $tax_clause, true ), 0 );
 			
@@ -1781,7 +1825,7 @@ class MLAQuery {
 				} // foreach phrase
 
 				if ( $allow_terms_search ) {
-					self::$search_parameters['tax_terms_count'] = self::_generate_tax_clause( array( 'phrases' => $keyword_string, 'radio_phrases' => self::$search_parameters['mla_search_connector'], 'radio_terms' => self::$search_parameters['mla_search_connector'], 'taxonomies' => self::$search_parameters['mla_search_taxonomies'] ), $tax_clause );
+					self::$search_parameters['tax_terms_count'] = self::_generate_tax_clause( array( 'phrases' => $keyword_string, 'taxonomies' => self::$search_parameters['mla_search_taxonomies'], 'radio_phrases' => self::$search_parameters['mla_search_connector'], 'radio_terms' => self::$search_parameters['mla_search_connector'], 'whole_word' => self::$search_parameters['whole_word'], 'exact' => self::$search_parameters['exact'], 'sentence' => self::$search_parameters['sentence'] ), $tax_clause );
 //error_log( __LINE__ . " MLAQuery::mla_query_posts_search_filter tax_clause = " . var_export( $tax_clause, true ), 0 );
 
 					if ( '1=0' === $tax_clause ) {

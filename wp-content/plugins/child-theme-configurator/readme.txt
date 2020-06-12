@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: child, theme, child theme, child themes, custom styles, customize styles, customize theme, css, responsive, css editor, child theme editor, child theme generator, child theme creator, style, stylesheet, customizer, childtheme, childthemes
 Requires at least: 4.0
 Requires PHP: 5.6.36
-Tested up to: 5.1
-Stable tag: 2.4.4
+Tested up to: 5.4
+Stable tag: 2.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,7 @@ When using the Customizer is not enough - Create a child theme from your install
 == Description ==
 
 Child Theme Configurator is a fast and easy to use utility that allows you to analyze any theme for common problems, create a child theme and customize it beyond the options of the Customizer. Designed for WordPress users who want to be able to customize child theme stylesheets directly, Child Theme Configurator lets you easily identify and override the exact CSS attributes you want to customize. The Analyzer scans the rendered theme and automatically configures your child theme. It correctly enqueues theme and font stylesheets for optimum performance and handles vendor-specific syntax, giving you unlimited control over the Child Theme look and feel while leaving your Parent Theme untouched. [Learn more about how to create a child theme](http://www.childthemeconfigurator.com).
+
 
 = Take Control of Your Child Themes =
 
@@ -298,21 +299,31 @@ https://www.youtube.com/watch?v=iBiiAgsK4G4
 7. Files tab
 
 == Changelog ==
-= 2.4.4 =
+= 2.5.5 =
+* Removed curly brace syntax from substring argument in Packer class.
+= 2.5.4 =
+* Fixed case where registered styles not showing in queue during analysis.
+= 2.5.3 =
+* Fixes to stylesheet. Updates to help tabs.
+= 2.5.2 =
+* Logic to prevent malformed style properties
+* Minor cosmetic changes
+= 2.5.0 =
+* Preview class now evaluates stylesheet hooks as they fire instead of calling them again to prevent function exists errors.
+* Tested for PHP version 7.1
+* Modified input parser to allow multi-stop background gradients.
+
+= 2.4.x =
 * Analyzer now saves all signals on successful child theme regardless of analysis results. 
 * This fixes a bug in some themes where the enqueue hooks were being rewitten incorrectly after adding web fonts.
-= 2.4.3 =
 * Fixed a serious regression bug created by version 2.4.2.
-= 2.4.2 =
 * Added call to customizer.php to initialize theme mods prior to analyzing child theme
 * Deferred copy_theme_mods until after child theme analysis. This allows hooks in Preview to initialize custom theme mods
 * Added mpriority (max priority) to CSS object to accommodate multiple irregular stylesheet hooks
 * Restored original (pre 2.4.1) version filter hook style_loader_src to child theme stylesheets to prevent caching
 * Strip closing php tag from functions.php to prevent premature response header
-= 2.4.1 =
 * Fixed localization issues (thanks @alexclassroom for identifying these)
 * Modified style_loader_src hook to only add timestamp under certain conditions to prevent loading delay for most requests. (thanks @anthony750)
-= 2.4.0 =
 * Automatically add action parent RTL stylesheet when child theme does not have one.
 * Handle case where parent theme changes queue action incorrectly points to non-existent child theme stylesheet.
 * Correctly copies customizer css to child theme.
@@ -573,8 +584,9 @@ https://www.youtube.com/watch?v=iBiiAgsK4G4
 
 == Upgrade Notice ==
 
-2.4.4 Analyzer now always resubmits on success to ensure all signals are saved. This fixes a bug in some themes where the enqueue hooks were being rewitten incorrectly after adding web fonts.
-2.4.3 Fixed a serious regression bug created by version 2.4.2. Please update immediately.
+* Preview class now evaluates stylesheet hooks as they fire instead of calling them again to prevent function exists errors.
+* Tested for PHP version 7.1
+* See changelog for details.
 
 == Query/Selector Tab ==
 

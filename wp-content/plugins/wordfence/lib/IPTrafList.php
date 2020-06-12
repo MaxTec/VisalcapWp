@@ -53,7 +53,7 @@ if (!wfUtils::isAdmin()) {
 			<tr>
 				<th>User:</th>
 				<td>
-					<a href="<?php echo $v['user']['editLink']; ?>" target="_blank" rel="noopener noreferrer"><?php echo $v['user']['avatar'] . ' ' . $v['user']['display_name']; ?></a>
+					<a href="<?php echo $v['user']['editLink']; ?>" target="_blank" rel="noopener noreferrer"><span data-userid="<?php echo esc_attr($v['user']['ID']); ?>" class="wfAvatar"></span><?php echo $v['user']['display_name']; ?></a>
 				</td>
 			</tr>
 		<?php } ?>
@@ -63,9 +63,13 @@ if (!wfUtils::isAdmin()) {
 				<td>
 					<span class="wf-flag <?php echo esc_attr('wf-flag-' . strtolower($v['loc']['countryCode'])); ?>" title="<?php echo esc_attr($v['loc']['countryName']); ?>"></span>
 					<?php if ($v['loc']['city']) {
-						echo $v['loc']['city'] . ', ';
+						echo esc_html($v['loc']['city']) . ', ';
 					} ?>
-					<?php echo $v['loc']['countryName']; ?>
+					<?php 
+					if ($v['loc']['region'] && wfUtils::shouldDisplayRegion($v['loc']['countryName'])) {
+						echo esc_html($v['loc']['region']) . ', ';
+					} ?>
+					<?php echo esc_html($v['loc']['countryName']); ?>
 				</td>
 			</tr>
 		<?php } ?>

@@ -75,7 +75,8 @@ __('Delete', 'sucuri-scanner');
 __('Submit', 'sucuri-scanner');
 __('Loading...', 'sucuri-scanner');
 __('IP Address Access', 'sucuri-scanner');
-__('This tool allows you to whitelist and blacklist one or more IP addresses from accessing your website. You can also configure the plugin to automatically blacklist any IP address involved in a password guessing brute-force attack. If a legitimate user fails to submit the correct credentials of their account they will have to log into the Firewall dashboard in order to delete their IP address from the blacklist, or try to login once again through a VPN.', 'sucuri-scanner');
+__('This tool allows you to blacklist one or more IP addresses from accessing your website.', 'sucuri-scanner');
+__('To delete an IP from the blacklist you can use the form below or you can log into the Firewall dashboard.', 'sucuri-scanner');
 __('Blacklist IP:', 'sucuri-scanner');
 __('e.g. 192.168.1.54', 'sucuri-scanner');
 __('IP Address', 'sucuri-scanner');
@@ -146,7 +147,7 @@ __('Loading...', 'sucuri-scanner');
 __('All Users', 'sucuri-scanner');
 __('Admins', 'sucuri-scanner');
 __('Logged-in Users', 'sucuri-scanner');
-__('Failed logins', 'sucuri-scanner');
+__('Failed Logins', 'sucuri-scanner');
 
 // lastlogins-admins.html.tpl
 __('Successful Logins (admins)', 'sucuri-scanner');
@@ -159,7 +160,7 @@ __('Newest To Oldest', 'sucuri-scanner');
 __('no data available', 'sucuri-scanner');
 __('IP Address', 'sucuri-scanner');
 __('Date/Time', 'sucuri-scanner');
-__('Edit', 'sucuri-scanner');
+__('Edit User Profile', 'sucuri-scanner');
 
 // lastlogins-all.html.tpl
 __('Successful Logins (all)', 'sucuri-scanner');
@@ -169,6 +170,7 @@ __('IP Address', 'sucuri-scanner');
 __('Hostname', 'sucuri-scanner');
 __('Date/Time', 'sucuri-scanner');
 __('no data available', 'sucuri-scanner');
+__('Delete All Successful Logins', 'sucuri-scanner');
 
 // lastlogins-all.snippet.tpl
 __('Edit', 'sucuri-scanner');
@@ -182,6 +184,7 @@ __('Date/Time', 'sucuri-scanner');
 __('Web Browser', 'sucuri-scanner');
 __('no data available', 'sucuri-scanner');
 __('Block', 'sucuri-scanner');
+__('Delete All Failed Logins', 'sucuri-scanner');
 
 // lastlogins-loggedin.html.tpl
 __('Logged-in Users}', 'sucuri-scanner');
@@ -193,7 +196,7 @@ __('Registered', 'sucuri-scanner');
 __('IP Address', 'sucuri-scanner');
 
 // lastlogins-loggedin.snippet.tpl
-__('Edit', 'sucuri-scanner');
+__('Edit User Profile', 'sucuri-scanner');
 __('Website:', 'sucuri-scanner');
 __('IP Address:', 'sucuri-scanner');
 __('Reverse IP:', 'sucuri-scanner');
@@ -306,7 +309,7 @@ __('HTTP Proxy Password', 'sucuri-scanner');
 __('API Service Communication', 'sucuri-scanner');
 __('Once the API key is generate the plugin will communicate with a remote API service that will act as a safe data storage for the audit logs generated when the website triggers certain events that the plugin monitors. If the website is hacked the attacker will not have access to these logs and that way you can investigate what was modified <em>(for malware infaction)</em> and/or how the malicious person was able to gain access to the website.', 'sucuri-scanner');
 __('Disabling the API service communication will stop the event monitoring, consider to enable the <a href="%%SUCURI.URL.Settings%%#general">Log Exporter</a> to keep the monitoring working while the HTTP requests are ignored, otherwise an attacker may execute an action that will not be registered in the security logs and you will not have a way to investigate the attack in the future.', 'sucuri-scanner');
-__('<strong>Are you a developer?</strong> You may be interested in our API. Feel free to use the URL shown below to access the latest 50 entries in your security log, change the value for the parameter <code>l=N</code> if you need more. Be aware that the API doesn’t provides an offset parameter, so if you have the intension to query specific sections of the log you will need to wrap the HTTP request around your own cache mechanism. We <strong>DO NOT</strong> take feature requests for the API, this is a semi-private service tailored for the specific needs of the plugin and not intended to be used by 3rd-party apps, we may change the behavior of each API endpoint without previous notice, use it at your own risk.', 'sucuri-scanner');
+__('<strong>Are you a developer?</strong> You may be interested in our API. Feel free to use the URL shown below to access the latest 50 entries in your security log, change the value for the parameter <code>l=N</code> if you need more. Be aware that the API doesn’t provides an offset parameter, so if you have the intention to query specific sections of the log you will need to wrap the HTTP request around your own cache mechanism. We <strong>DO NOT</strong> take feature requests for the API, this is a semi-private service tailored for the specific needs of the plugin and not intended to be used by 3rd-party apps, we may change the behavior of each API endpoint without previous notice, use it at your own risk.', 'sucuri-scanner');
 
 // settings-general-apikey.html.tpl
 __('API Key', 'sucuri-scanner');
@@ -363,7 +366,7 @@ __('File Path:', 'sucuri-scanner');
 __('Submit', 'sucuri-scanner');
 
 // settings-general-timezone.html.tpl
-__('Timezone', 'sucuri-scanner');
+__('Timezone Override', 'sucuri-scanner');
 __('This option defines the timezone that will be used through out the entire plugin to print the dates and times whenever is necessary. This option also affects the date and time of the logs visible in the audit logs panel which is data that comes from a remote server configured to use Eastern Daylight Time (EDT). WordPress offers an option in the general settings page to allow you to configure the timezone for the entire website, however, if you are experiencing problems with the time in the audit logs, this option will help you fix them.', 'sucuri-scanner');
 __('Timezone:', 'sucuri-scanner');
 __('Submit', 'sucuri-scanner');
@@ -435,6 +438,10 @@ __('Name', 'sucuri-scanner');
 __('Value', 'sucuri-scanner');
 __('I understand that this operation cannot be reverted.', 'sucuri-scanner');
 __('Generate New Security Keys', 'sucuri-scanner');
+__('Automatic Secret Keys Updater', 'sucuri-scanner');
+__('Changing the Secret Keys frequently will decrease the chances of misuse of sessions left open on unprotected devices.', 'sucuri-scanner');
+__('Frequency:', 'sucuri-scanner');
+__('Submit', 'sucuri-scanner');
 
 // settings-scanner-cronjobs.html.tpl
 __('Scheduled Tasks', 'sucuri-scanner');
@@ -484,6 +491,7 @@ __('Access File Integrity', 'sucuri-scanner');
 __('The <code>.htaccess</code> file is a distributed configuration file, and is how the Apache web server handles configuration changes on a per-directory basis. WordPress uses this file to manipulate how Apache serves files from its root directory and subdirectories thereof; most notably, it modifies this file to be able to handle pretty permalinks.', 'sucuri-scanner');
 __('Htaccess file found in', 'sucuri-scanner');
 __('Your website has no <code>.htaccess</code> file or it was not found in the default location.', 'sucuri-scanner');
+__('Your web server does not support .htaccess files.', 'sucuri-scanner');
 __('The main <code>.htaccess</code> file in your site has the standard rules for a WordPress installation. You can customize it to improve the performance and change the behaviour of the redirections for pages and posts in your site. To get more information visit the official documentation at <a target="_blank" rel="noopener" href="https://codex.wordpress.org/Using_Permalinks#Creating_and_editing_.28.htaccess.29"> Codex WordPress - Creating and editing (.htaccess)</a>', 'sucuri-scanner');
 __('Codex WordPress HTAccess', 'sucuri-scanner');
 
@@ -521,3 +529,6 @@ __('The remote malware scanner provided by the plugin is powered by <a href="htt
 __('Malware Scan Target', 'sucuri-scanner');
 __('Malware Scan Target:', 'sucuri-scanner');
 __('Submit', 'sucuri-scanner');
+
+// wordpress-recommendations.html.tpl
+__('WordPress Security Recommendations', 'sucuri-scanner');

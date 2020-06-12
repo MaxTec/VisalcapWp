@@ -3,10 +3,10 @@ Contributors: artprojectgroup
 Donate link: https://artprojectgroup.es/tienda/donacion
 Tags: Art Project Group, APG, Plugins, WooCommerce, e-Commerce, Commerce, Shop, Virtual shop, Shipping, Weight, Dimensions, ZIP, Postcode, State, Country, Tax, Shipping classes, WooCommerce Product Bundles, WPML
 Requires at least: 3.8
-Tested up to: 5.0
-Stable tag: 2.2.3.2
+Tested up to: 5.5
+Stable tag: 2.3.1.4
 WC requires at least: 2.6
-WC tested up to: 3.4
+WC tested up to: 4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,8 @@ Add to WooCommerce shipping costs calculating based on weight, size and post cod
 * You can assign rates to specific shipping classes.
 * You can select the highest shipping class rate instead of the sum of rates.
 * You can choose accept or not weight or dimensions excess.
+* You can exclude shipping for one or several product categories.
+* You can exclude shipping for one or several product tags.
 * You can exclude shipping for one, several or all shipping classes.
 * You can exclude user roles.
 * You can hide payment gateways.
@@ -60,7 +62,6 @@ Don’t forget to leave us your comment on:
 * [WC - APG Weight Shipping](https://artprojectgroup.es/plugins-para-woocommerce/wc-apg-weight-shipping) on Art Project Group.
 * [Art Project Group](https://www.facebook.com/artprojectgroup) on Facebook.
 * [@artprojectgroup](https://twitter.com/artprojectgroup) on Twitter.
-* [+ArtProjectGroupES](https://plus.google.com/+ArtProjectGroupES/) on Google+.
 
 = More plugins =
 Remember that you can find more [plugins for WordPress](https://artprojectgroup.es/plugins-para-wordpress) and more [plugins for WooCommerce](https://artprojectgroup.es/plugins-para-woocommerce) on [Art Project Group](https://artprojectgroup.es) and our profile on [WordPress](https://profiles.wordpress.org/artprojectgroup/).
@@ -92,6 +93,29 @@ If you need help to configuring or installing **WC - APG Weight Shipping**, **Ar
 2. Screenshot of WC - APG Weight Shipping. APG Shipping Tab.
 
 == Changelog ==
+= 2.3.1.4 =
+* Small fixes in shipping cost calculations. **Reported by [aceone999](https://wordpress.org/support/topic/wrong-fee-with-shipping-classes/)**.
+= 2.3.1.3 = 
+* Small fixes.
+= 2.3.1.2 = 
+* Small fixes in shipping cost calculations. **Reported by [aceone999](https://wordpress.org/support/topic/version-2-3-1-1-still-broken/)**.
+= 2.3.1.1 = 
+* Small fixes in shipping cost calculations. **Reported by [aceone999](https://wordpress.org/support/topic/bug-for-dimensions-in-2-3-1/)**.
+= 2.3.1 = 
+* Rates generation function rewritten.
+= 2.3.0.2 = 
+* Small fixes in shipping cost calculations. **Reported by [lepress](https://wordpress.org/support/topic/fee-is-wrong-for-being-ignorant-the-shipping-class/#post-11943232)**.
+= 2.3.0.2 = 
+* Small fixes in the exclusion of shipping by product categories and tags.
+= 2.3.0.1 = 
+* Small fixes.
+= 2.3 = 
+* Added options to exclude shippings by product categories and tags. **Update sponsored by [YonofumoYovapeo](https://yonofumoyovapeo.com)**.
+* Screenshot updated.
+= 2.2.3.4 = 
+* Small fixes.
+= 2.2.3.3 = 
+* Small fixes.
 = 2.2.3.2 = 
 * Small fixes.
 = 2.2.3.1 = 
@@ -377,8 +401,8 @@ If you need help to configuring or installing **WC - APG Weight Shipping**, **Ar
 * Initial version.
 
 == Upgrade Notice ==
-= 2.2.3.2 = 
-* Small fixes.
+= 2.3.1.4 =
+* Small fixes in shipping cost calculations. **Reported by [aceone999](https://wordpress.org/support/topic/wrong-fee-with-shipping-classes/)**.
 
 == Translations ==
 * *English*: by [**Art Project Group**](https://artprojectgroup.es/) (default language).

@@ -5,11 +5,6 @@
 	 * @since 5.0.20
 	 */
 	function coming_soon_init_recommendations() {
-		$dismmised = get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_coming-soon', true);
-		if($dismmised == 1){
-				return;
-		}
-		
 		// Recommend only for new installs.
 		if ( ! coming_soon_is_new_install() ) {
 			return;
@@ -17,10 +12,10 @@
 		// Specify a plugin that we want to recommend.
 		$plugins = apply_filters( 'coming_soon_recommendations_plugins', array(
 			array(
-				'name'        => 'Contact Form by WPForms',
-				'slug'        => 'wpforms-lite',
+				'name'        => 'RafflePress',
+				'slug'        => 'rafflepress',
 				'required'    => false,
-				'is_callable' => 'wpforms', // This will target the Pro version as well, not only the one from WP.org repository.
+				'is_callable' => 'rafflepress', // This will target the Pro version as well, not only the one from WP.org repository.
 			),
 		) );
 		/*
@@ -34,28 +29,28 @@
 			'has_notices'  => true,                    // Show admin notices or not.
 			'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
 			'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-			'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+			'is_automatic' => true,                   // Automatically activate plugins after installation or not.
 			'message'      => '',                      // Message to output right before the plugins table.
 			'strings'      => array(
 				/* translators: 1: plugin name(s). */
 				'notice_can_install_recommended'  => _n_noop(
-					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
+					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best Giveaway and Contest plugin to help you grow your email list and social media followings.',
+					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best Giveaway and Contest plugin to help you grow your email list and social media followings.',
 					'coming-soon'
 				),
 				/* translators: 1: plugin name(s). */
 				'notice_can_activate_recommended' => _n_noop(
-					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
+					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best Giveaway and Contest plugin to help you grow your email list and social media followings.',
+					'Thanks for using Coming Soon Page & Maintenance Mode by SeedProd. We also recommend using %1$s. It\'s the best Giveaway and Contest plugin to help you grow your email list and social media followings.',
 					'coming-soon'
 				),
 				'install_link'                    => _n_noop(
-					'Install WPForms Now',
+					'Install RafflePress Now',
 					'Begin installing plugins',
 					'coming-soon'
 				),
 				'activate_link'                   => _n_noop(
-					'Activate WPForms',
+					'Activate RafflePress',
 					'Begin activating plugins',
 					'coming-soon'
 				),

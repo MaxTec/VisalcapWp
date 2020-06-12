@@ -26,17 +26,35 @@ class ACP_Addon_MLA_ListScreen extends AC_Addon_MLA_ListScreen
 		parent::__construct();
 
 		add_action( 'ac/table/list_screen', array( $this, 'export_table_global' ) );
+		
+		if ( version_compare( ACP()->get_version(), '4.5.4', '>=' ) ) {
+			add_filter('acp/editing/bulk/active', array( $this, 'disable_bulk_editing' ), 10, 2 );
+		}
 	}
 
 	/**
 	 * Set MLA-specific inline editing strategy for Admin Columns Pro
 	 *
 	 * @since 2.71
-	 *
-	 * @param ACP\Editing\Model $model
 	 */
-	public function editing( /* $model */ ) {
-		return new ACP_Addon_MLA_Editing_Strategy( 'attachment' /* $model */ );
+	public function editing() {
+		return new ACP_Addon_MLA_Editing_Strategy( 'attachment' );
+	}
+
+	/**
+	 * Set MLA-specific inline editing strategy for Admin Columns Pro
+	 *
+	 * @since 2.79
+	 *
+	 * @param boolean $active
+	 * @param AC_ListScreen $list_screen
+	 */
+	public function disable_bulk_editing( $active, $list_screen ){
+		if( $list_screen instanceof ACP_Addon_MLA_ListScreen ){
+			return false;
+		}
+
+		return $active;
 	}
 
 	/**
@@ -206,6 +224,27 @@ class ACP_Addon_MLA_Export_Strategy extends ACP\Export\Strategy {
 	 */
 	public function __construct( $list_screen ) {
 		parent::__construct( $list_screen );
+	}
+
+	/**
+	 * @return ListTable
+	 */
+	protected function get_list_table() {
+		global $wp_list_table;
+
+		if ( ! class_exists( 'MLA_List_Table' ) ) {
+			require_once( MLA_PLUGIN_PATH . 'includes/class-mla-list-table.php' );
+			MLA_List_Table::mla_admin_init_action();
+		}
+
+		if ( $wp_list_table instanceof MLA_List_Table ) {
+			return $wp_list_table;
+		}
+
+		$wp_list_table = new MLA_List_Table();
+		$wp_list_table->prepare_items();
+
+		return $wp_list_table;
 	}
 
 	/**

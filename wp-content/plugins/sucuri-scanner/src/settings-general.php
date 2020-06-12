@@ -206,9 +206,17 @@ function sucuriscan_settings_general_datastorage($nonce)
                 }
             }
 
+            // Register on audit logs and return result.
+            SucuriScanEvent::reportInfoEvent(
+                sprintf(
+                    __('%s were deleted.', 'sucuri-scanner'),
+                    implode(', ', $filenames)
+                )
+            );
+
             SucuriScanInterface::info(
                 sprintf(
-                    __('%d out of %d files has been deleted', 'sucuri-scanner'),
+                    __('%d out of %d files have been deleted.', 'sucuri-scanner'),
                     $deleted,
                     count($filenames)
                 )
@@ -638,7 +646,7 @@ function sucuriscan_settings_general_timezone($nonce)
         $fill = (abs($hour) < 10) ? '0' : '';
         $keyname = sprintf('UTC%s%s%.2f', $sign, $fill, abs($hour));
         $label = date('d M, Y H:i:s', $current + ($hour * 3600));
-        $options[$keyname] = $label;
+        $options[$keyname] = $keyname . ' (' . $label . ')';
     }
 
     if ($nonce) {
