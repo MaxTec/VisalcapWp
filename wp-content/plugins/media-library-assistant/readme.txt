@@ -1,11 +1,11 @@
-=== Media Library Assistant ===
+﻿=== Media Library Assistant ===
 Contributors: dglingren
 Donate link: http://davidlingren.com/#two
 Tags: attachments, gallery, images, media, media library, tags, categories, IPTC, EXIF, XMP, GPS, PDF, metadata, photos, photographs, photo albums, MIME, mime-type, icon, upload, file extensions, WPML, Polylang
 Requires at least: 3.5.0
-Tested up to: 5.0.3
+Tested up to: 5.4
 Requires PHP: 5.3
-Stable tag: 2.78
+Stable tag: 2.83
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -181,32 +181,63 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
-= 2.78 =
-* New: For the Media/Assistant "Search Media" and "Terms Search" functions, keywords and terms can be excluded from the results by enclosing them in "/" delimiters, e.g., "/not/ happy" will return items containing "happy" after excluding items containing "not". This new feature also works in the Media/Library "grid" view and in the "Add media" popup window.
-* Fix: Eliminate fatal errors supporting Admin Columns Pro version 4.5.x
-* Fix: When Polylang is active, eliminate PHP error messages from MLA_Polylang_Shortcodes::mla_get_terms_clauses.
-* Fix: For `[mla_gallery]` eliminate PHP warning messages for some invalid parameter situations. 
-* Fix: Simplify MLA_Ajax logging and remove PHP Notice regarding missing "action" value.
-* Fix: For "MLA USP Novo-Map Example" plugin, rewrite the "Introduction" section in the Documentation tab.
+= 2.83 =
+* Fix: For Admin Columns Pro v5.1+, correct "Fatal error: Class ACP_Addon_MLA_Export_Strategy..." problem.
+* Fix: For the Media Manager Modal (popup) Window, correct positioning of the attachments area below the toolbar.
 
-= 2.77 =
-* Fix: Preserve current term assignments for checklist-style taxonomies when opening the Media/Assistant Quick Edit area. This defect was introduced in v2.76.
+= 2.82 =
+* New: For the "MLA Insert Fixit" example plugin, new "Figure Caption" tools let you add or replace `<figcaption>` values for items and galleries in the body of a post/page.
+* New: For the "MLA Insert Fixit" example plugin, a new "Item fields to parent" tool lets you copy custom field values from attached items to their parent post/page.
+* New: For the "MLA Insert Fixit" example plugin, allow multiple taxonomy pairs for the "Item terms to parent" and "Parent terms to item" tools.
+* New: For the `[mla_gallery]` shortcode Taxonomy term keyword(s) search, a new `whole_word=true` parameter requires each entered word to match an entire word in the term name, e.g., entering "man" (without the quotes) will not match a portion of "woman" in the term name.
+* New: For the "MLA tax query Example" plugin, multiple taxonomies are allowed in `my_custom_sql` and a new `tax_operator` parameter within `my_custom_sql` supports "AND" to require a match on all of the terms in the taxonomy parameters..
+* New: For the "WooCommerce Fixit Tools" example plugin, new "Populate Product from Product Image" tool updates Product values from the Product Image.
+* New: For the "MLA Insert Fixit" example plugin, allow custom post types for the "Copy ALT Text between Media Library items and Post/Page inserts" tools.
+* Fix: For `[mla_gallery]`, when `mla_alt_ids_value` is used the style template, gallery open and row open HTML markup is no longer generated. Only the output of the alternate shortcode is echoed to the browser.
+* Fix: For the Media Manager Modal (popup) Window, toolbar controls no longer overflow into the Attachmenta area..
+* Fix: For the Media Manager Modal (popup) Window, "Filter media" selections, e.g., search box contents, persist for two or more "Media Library" invocations on a post/page.
+* Fix: Corrected Chrome & Firefox issue with "Search Box" checkbox control changes not being recorded.
+* Fix: Corrected PHP 7.4 issue with deprecated curly braces in `class-mla-data.php` and `class-mla-data-query.php`.
+* Fix: For "MLA Gallery in" (where-used) reporting, shortcodes using the enclosing shortcode syntax are now included in the results.
+* Fix: For "search" text boxes in all Settings/Media Library Assistant tabs, properly escape values to prevent Reflected Cross Site Scripting attacks.
+* Fix: For `[mla_gallery]` `link=download`, restrict downloads to the WordPress Uploads directory subtree to prevent Local File Disclosure attacks. The old file downloader has been replaced by an AJAX-based WordPress request.
+* Fix: For `[mla_gallery]`, validate content of `tax_query`, `meta_query` and `date_query` parameters to prevent Remote Code Execution attacks.
+* Fix: For the "MLA UI Elements Example" plugin, correct parameter handling defects in `[mla_term_list]` handler.
+* Fix: For WordPress 5.3+ "big image" handling, use the "original image" for sourcing IPTC/EXIF/XMP metadata, not the "scaled" image.
 
-= 2.76 =
-* New: For the Media/Assistant Quick Edit and Bulk Edit areas, "checklist-style" taxonomies such as Att. Categories now have an <strong>"+ Add New Term"</strong> feature that lets you add a new term to the taxonomy without leaving the area. <strong>You must enable the new feature</strong> by checking the "Inline Add Term" box for each taxonomy in the Settings/Media Library Assistant General tab, "Taxonomy Support" section. 
-* New: For the Media/Assistant Quick Edit and Bulk Edit areas, "checklist-style" taxonomies such as Att. Categories now have a <strong>"? Search"</strong> feature that lets you filter the checklist by entering part or all of the term name.
-* New: For the "WooCommerce Fixit" example plugin, a new "Replace Name/Slug" tool has been added.
-* New: A new example plugin, "MLA USP Novo-Map Example", has been added. The plugin fills posts created by the "User Submitted Posts" plugin with information for the "Novo Map" plugin.
-* New: For `[mla_gallery mla_viewer=true]`, the `size` parameter can be used to set viewer width and height from one of the intermediate sizes your site supports.
-* New: For the "Photonic Gallery" Plugin, non-image items can now be included in Photonic galleries, with optional thumbnail support from the item's Featured Image.
-* New: Removed plugin donation prompts and references.
-* New: Updated plugin and author URLs.
-* Fix: For the Media/Assistant submenu table, the "orderby" argument is now added to pagination links for columns such as "Date" (post_date).
-* Fix: A JavaScript defect that disabled Media/Assistant Bulk Edit operations has been corrected.
-* Fix: Calling `MLAData_Source::mla_get_data_source()` from the WordPress front end now loads the other MLA classes on which it depends, avoiding PHP fatal errors.
-* Fix: For the "MLA Path Mapping Example" plugin, a defect in assigning child terms to their parent term has been corrected.
+= 2.81 =
+* New: For the "Field-level Substitution Parameters", a new "mso:" prefix gives access to the Document Properties embedded in Office Open XML file formats (e.g., docx, xlsx, pptx). More information is given in the "Prefix values" section of the Settings/Media Library Assistant Documentation tab.
+* New: For the Bulk Edit, a new `[+reverse_index+]` substitution parameter counts down from the number of selected items to one. More informatin is in the Help menu for the Media/Assistant admin screen.
+* New: For the "WooCommerce Fixit" example plugin, product category thumbnail information is added to the "Woo Used In" Media/Assistant table column.
+* Fix: IPTC/EXIF and Custom Field mapping logic updated for compatibility with WordPress 5.3.
+* Fix: Updated Media Manager Modal Window and Media/Library Grid view styles for compatibility with WordPress 5.3.
+* Fix: For the Settings/Media Library Assistant Example Plugins page, update the `MLA_Upgrader_Skin` code for compatibility with WordPress 5.3.
+* Fix: For the Settings/Media Library Assistant IPTC/EXIF tab, PHP Notices for invalid taxonomy rules have been resolved.
+* Fix: For the "replace()" option/format value, empty replacement values are now allowed.
+* Fix: For custom field mapping rules, "Option: Array" now works with multi-level nested subarrays.
+* Fix: For custom field mapping rules, "Delete NULL Values" now works with "Format: Raw".
+* Fix: For "WordPress-style" PDF thumbnail generation, occasional PHP "Illegal string offset 'sizes'" errors have been resolved.
 
-= 2.70 - 2.75 =
+= 2.80 =
+* New: A new "MLA Phoenix Media Rename Example" plugin has been added to the "Examples" family in the Settings/Media Library Assistant Documentation tab. It adds support for the Phoenix Media Rename plugin's "Filename" column to the Media/Assistant submenu table.
+* Fix: For the Media/Assistant admin submenu screen, avoid "headers already sent" error with JoomUnited's WP Media Folders.
+* Fix: Improved error handling and debug logging for PDF thumbnail generation, especially "WordPress style" thumbnails.
+* Fix: Avoid Javascript "Uncaught Reference Error" in `mla-define-ajaxurl-scripts.js`, e.g., for Divi theme.
+* Fix: PHP 7.x compatibility error in `class-mla-settings-documentation-tab.php`, function `MLA_Upgrader_Skin->feedback()` has been resolved.
+* Fix: When the per-user "admin language" is set to "English (United States)", the untranslated MLA strings are restored in "back end" mode.
+* Fix: Improve handling of shortcode parameter/content errors, avoiding misleading "Invalid tax_query" messages. Improved error information in the `mla_debug` output as well.
+* Fix: For the "MLA Insert Fixit" example plugin, correct flaw in finding inserted images that have a relative path in the `src=` attribute of the IMG tag.
+* Fix: For the "MLA Insert Fixit" example plugin, correct flaw in finding inserted images that have other attributes preceding `src=` in the IMG tag.
+* Fix: For the `,extract(p,v)` option/format value, correct named subpattern and `matches:` prefix handling.
+* Fix: When Polylang is active, eliminate PHP messages and errors for some Media/Assistant Bulk Translate settings.
+* Fix: When decoding the `wp_filter` list for debug logging, unknown reference types no longer cause PHP errors.
+* Fix: Handles new synchronization protocol for WP/LR Sync version 5.0+
+
+= 2.70 - 2.79 =
+* 2.79 - [mla_gallery] keyword/term search "exclude" logic, [mla_tag_cloud] performance improvements, Media/Assistant Download bulk action. Nine enhancements in all, six fixes.
+* 2.78 - Support Admin Columns Pro v4.5.x, add "Search Media" and "Terms Search" exclude logic, Eliminate PHP messages for Polylang and some AJAX actions. One enhancement, five fixes.
+* 2.77 - Preserve current term assignments for checklist-style taxonomies when opening the Media/Assistant Quick Edit area. This defect was introduced in v2.76.
+* 2.76 - "Checklist-style" term search and additions in the Bulk and Quick Edit areas. New and improved example plugins. Seven enhancements, four fixes.
 * 2.75 - Admin Columns (and Pro) fixes to eliminate PHP messages. Five fixes in all.
 * 2.74 - Cross-Site Scripting vulnerabilities have been removed from the Media/Assistant and Settings/Media Library assistant admin submenu screens. One enhancement, seven fixes.
 * 2.73 - Checklist-style flat taxonomy improvements, Admin Columns Pro fix, new and improved example plugins, e.g., "parent search". Five enhancements, four fixes.
@@ -305,8 +336,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.78 =
-Support Admin Columns Pro v4.5.x, add "Search Media" and "Terms Search" exclude logic, Eliminate PHP messages for Polylang and some AJAX actions. One enhancements five fixes.
+= 2.83 =
+Avoid "Fatal error:" with Admin Columns Pro version 5.1+. Fix Attachments area positioning in the Media Manager Modal (popup) Window. Two fixes in all.
 
 == Other Notes ==
 
@@ -465,68 +496,3 @@ When terms change in any of the above ways there are two tasks that require rule
 
 1. How should language-specific terms be assigned to items selected? This is "Term Assignment".
 1. How should terms assigned to one translation of an item be used to update other translations of the same item? This is "Term Synchronization".
-
-When new terms are added during IPTC/EXIF taxonomy term mapping a third task is required; should new terms be added only to the current language or should they be made available in all languages? This is "Term Mapping Replication".
-
-<strong>Term Assignment</strong>
-
-When a specific language is selected only the item translations for that language are shown, and only the terms for that language are displayed (except for a Polylang bug that shows all languages in the "auto-complete" list for flat taxonomies). When "All Languages"/"Show all languages" is selected the terms for all languages are displayed even if they cannot be assigned to an item. For example, a Spanish term may appear in the list be cannot be assigned to an English item translations.
-
-For individual edit and quick edit updates the rule is simple:
-
-1. For all terms selected/entered, find the equivalent term in the language of the item translation. Assign the equivalent (language-specific) term if one exists. If no equivalent term exists, ignore the selected/entered term. Assign all equivalent terms to the item translation, replacing any previous terms.
-
-For bulk edit updates the rule depends on which action (add, remove, replace) has been selected. Each of the item translations in the bulk edit list is updated by these rules:
-
-1. <strong>Add</strong>: For all terms selected/entered, find the equivalent term in the language of the item translation. Assign the equivalent (language-specific) term if one exists. If the equivalent term exists, add it to the item translation.
-1. <strong>Remove</strong>: For all terms selected/entered, find the equivalent term in the language of the item translation. Assign the equivalent (language-specific) term if one exists. If the equivalent term exists, remove it from the item translation.
-1. <strong>Replace</strong>: This is the tricky case. What should happen to terms already assigned to an item translation that have not been selected/entered for the update? In particular, what about terms that do not have translations to all languages? Should a "French-only" term be preserved?
-
-The "<strong>Replace</strong>" answer is the same as the individual/quick edit answer. If the term is not selected/entered for the update it is discarded along with the other old assignments. After all, in "All Languages"/"Show all languages" mode the "French-only" term would have been in the list and could be selected if desired.
-
-<strong>Term Synchronization</strong>
-
-If you edit an item translation, for example to add or remove a term assignment, what should happen to the other translations of the same item? Term synchroniztion will add or remove the equivalent term in the other item translations if the equivalent term exists.
-
-What about "untranslated" terms that do not have translations to all languages? Should an existing "French-only" (untranslated) term be preserved? It is, since there is no way to indicate that it should be removed.
-
-Individual and quick edits are "replace" updates, and "replace" is an option for bulk edits as well. For term synchronization to preserve untranslated terms "replace" updates must be converted to separate "add" and "remove" updates that include only the changes made to the original item translation. For example, if these terms are defined:
-
-English
-
-- Common-term-1-eng
-- Common-term-2-eng
-- English-only-term
-
-Spanish
-
-- Common-term-1-esp
-- Common-term-2-esp
-- Spanish-only-term
-
-And these term assignments exist:
-
-English Translation
-
-- Common-term-1-eng
-- English-only-term
-
-Spanish Translation
-
-- Common-term-1-esp
-- Spanish-only-term
-
-Then synchronization handles common editing actions as follows:
-
-1. If you edit the English Translation and add "Common-term-2-eng", synchronization will add "Common-term-2-esp" to the Spanish Translation.
-1. If you edit the English Translation and remove "Common-term-1-eng", synchronization will remove "Common-term-1-esp" from the Spanish Translation.
-1. If you edit the English Translation and remove "English-only-term", nothing will happen to the Spanish Translation.
-
-<strong>Term Mapping Replication</strong>
-
-When rules are defined in the IPTC/EXIF "Taxonomy term mapping section" they extract values (e.g., "IPTC 2#025 Keywords") from image metadata and use them to assign terms to the Media Library item(s). If the metadata value matches an existing term in the item's language it is assigned to the item. If the term already exists for any other active language it is not assigned to the item. If the term does not exist in any of the active languages, i.e., it is an entirely new term, a decision is required. The "Term Mapping Replication" option controls the decision:
-
-* When Replication <strong>is active</strong>, the term is created in the current language and then copied to every other active language as a translation of the term in the current language.
-* When Replication <strong>is not active</strong>, the term is created in the current language only. It is not copied to any other active language and will not be assigned to items in any language other than the current language.
-
-If you use Replication to automatically create terms in non-current languages they will be created with the same text value as the source term in the current language. You can always go to the taxonomy edit page and change the source text to an appropriate value for the other language(s). If you do not use Replication you can always go to the taxonomy edit page and add translations with an appropriate value for the other language(s).

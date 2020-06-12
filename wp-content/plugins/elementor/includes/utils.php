@@ -15,20 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Utils {
 
+	const DEPRECATION_RANGE = 0.4;
+
 	/**
 	 * Is ajax.
 	 *
 	 * Whether the current request is a WordPress ajax request.
 	 *
 	 * @since 1.0.0
+	 * @deprecated 2.6.0 Use `wp_doing_ajax()` instead.
 	 * @access public
 	 * @static
 	 *
 	 * @return bool True if it's a WordPress ajax request, false otherwise.
 	 */
 	public static function is_ajax() {
-		// TODO: When minimum required version of WordPress will be 4.7, use `wp_doing_ajax()` instead.
-		return defined( 'DOING_AJAX' ) && DOING_AJAX;
+		// _deprecated_function( __METHOD__, '2.6.0', `wp_doing_ajax()` );
+
+		return wp_doing_ajax();
 	}
 
 	/**
@@ -62,7 +66,7 @@ class Utils {
 	 * @return string Post edit link.
 	 */
 	public static function get_edit_link( $post_id = 0 ) {
-		// TODO: _deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_edit_url()' );
+		_deprecated_function( __METHOD__, '2.6.0', 'Plugin::$instance->documents->get( $post_id )->get_edit_url()' );
 
 		if ( ! $post_id ) {
 			$post_id = get_the_ID();
@@ -86,7 +90,7 @@ class Utils {
 		 * @param string $edit_link New URL query string (unescaped).
 		 * @param int    $post_id   Post ID.
 		 */
-		$edit_link = apply_filters( 'elementor/utils/get_edit_link', $edit_link, $post_id );
+		$edit_link = apply_filters_deprecated( 'elementor/utils/get_edit_link', [ $edit_link, $post_id ], '2.0.0', 'elementor/document/urls/edit' );
 
 		return $edit_link;
 	}
@@ -139,7 +143,7 @@ class Utils {
 	 * @return string Post preview URL.
 	 */
 	public static function get_preview_url( $post_id ) {
-		// TODO: _deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_preview_url()' );
+		_deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_preview_url()' );
 
 		$url = Plugin::$instance->documents->get( $post_id )->get_preview_url();
 
@@ -154,7 +158,7 @@ class Utils {
 		 * @param string $preview_url URL with chosen scheme.
 		 * @param int    $post_id     Post ID.
 		 */
-		$url = apply_filters( 'elementor/utils/preview_url', $url, $post_id );
+		$url = apply_filters_deprecated( 'elementor/utils/preview_url', [ $url, $post_id ], '2.0.0', 'elementor/document/urls/preview' );
 
 		return $url;
 	}
@@ -175,7 +179,7 @@ class Utils {
 	 * @return string WordPress preview URL.
 	 */
 	public static function get_wp_preview_url( $post_id ) {
-		// TODO: _deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_wp_preview_url()' );
+		_deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_wp_preview_url()' );
 
 		$wp_preview_url = Plugin::$instance->documents->get( $post_id )->get_wp_preview_url();
 
@@ -190,7 +194,7 @@ class Utils {
 		 * @param string $wp_preview_url WordPress preview URL.
 		 * @param int    $post_id        Post ID.
 		 */
-		$wp_preview_url = apply_filters( 'elementor/utils/wp_preview_url', $wp_preview_url, $post_id );
+		$wp_preview_url = apply_filters_deprecated( 'elementor/utils/wp_preview_url', [ $wp_preview_url, $post_id ], '2.0.0', 'elementor/document/urls/wp_preview' );
 
 		return $wp_preview_url;
 	}
@@ -261,7 +265,7 @@ class Utils {
 	 * @return string Exit to dashboard URL.
 	 */
 	public static function get_exit_to_dashboard_url( $post_id ) {
-		// TODO: _deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_exit_to_dashboard_url()' );
+		_deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_exit_to_dashboard_url()' );
 
 		return Plugin::$instance->documents->get( $post_id )->get_exit_to_dashboard_url();
 	}
@@ -445,58 +449,12 @@ class Utils {
 	}
 
 	/**
-	 * Do action deprecated.
-	 *
-	 * Fires functions attached to a deprecated action hook.
-	 *
-	 * @since 1.0.10
-	 * @access public
-	 * @static
-	 * @deprecated 2.1.0 Use `do_action_deprecated()` instead
-	 *
-	 * @param string $tag         The name of the action hook.
-	 * @param array  $args        Array of additional function arguments to be passed to `do_action()`.
-	 * @param string $version     The version of WordPress that deprecated the hook.
-	 * @param bool   $replacement Optional. The hook that should have been used.
-	 * @param string $message     Optional. A message regarding the change.
-	 */
-	public static function do_action_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
-		_deprecated_function( __METHOD__, '2.1.0', 'do_action_deprecated()' );
-
-		do_action_deprecated( $tag, $args, $version, $replacement, $message );
-	}
-
-	/**
-	 * Do filter deprecated.
-	 *
-	 * Fires functions attached to a deprecated filter hook.
-	 *
-	 * @since 1.0.10
-	 * @access public
-	 * @static
-	 * @deprecated 2.1.0 Use `apply_filters_deprecated()` instead
-	 *
-	 * @param string $tag         The name of the filter hook.
-	 * @param array  $args        Array of additional function arguments to be passed to `apply_filters()`.
-	 * @param string $version     The version of WordPress that deprecated the hook.
-	 * @param bool   $replacement Optional. The hook that should have been used.
-	 * @param string $message     Optional. A message regarding the change.
-	 *
-	 * @return mixed The filtered value after all hooked functions are applied to it.
-	 */
-	public static function apply_filters_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
-		_deprecated_function( __METHOD__, '2.1.0', 'apply_filters_deprecated()' );
-
-		return apply_filters_deprecated( $tag, $args, $version, $replacement, $message );
-	}
-
-	/**
 	 * Get last edited string.
 	 *
 	 * Retrieve a string saying when the post was saved or the last time it was edited.
 	 *
 	 * @since 1.9.0
-	 * @deprecated 2.0.0 Use `Plugin::$instance->documents->get()` method instead.
+	 * @deprecated 2.0.0 Use `Plugin::$instance->documents->get( $post_id )->get_last_edited()` method instead.
 	 *
 	 * @access public
 	 * @static
@@ -506,7 +464,7 @@ class Utils {
 	 * @return string Last edited string.
 	 */
 	public static function get_last_edited( $post_id ) {
-		// TODO: _deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get()' );
+		_deprecated_function( __METHOD__, '2.0.0', 'Plugin::$instance->documents->get( $post_id )->get_last_edited()' );
 
 		$document = Plugin::$instance->documents->get( $post_id );
 
@@ -640,10 +598,133 @@ class Utils {
 		return apply_filters( 'elementor/template/viewport_tag', $meta_tag, $context );
 	}
 
-	public static function elementor_print_js_config( $js_var, $config, $already_json = false ) {
-		$config = $already_json ? $config : wp_json_encode( $config );
-		echo '<script data-cfasync="false">' . PHP_EOL;
-		echo 'var ' . $js_var . ' = ' . $config . ';' . PHP_EOL;
-		echo '</script>' . PHP_EOL;
+	/**
+	 * Add Elementor Config js vars to the relevant script handle,
+	 * WP will wrap it with <script> tag.
+	 * To make sure this script runs thru the `script_loader_tag` hook, use a known handle value.
+	 * @param string $handle
+	 * @param string $js_var
+	 * @param mixed $config
+	 */
+	public static function print_js_config( $handle, $js_var, $config ) {
+		$config = wp_json_encode( $config );
+
+		if ( get_option( 'elementor_editor_break_lines' ) ) {
+			// Add new lines to avoid memory limits in some hosting servers that handles the buffer output according to new line characters
+			$config = str_replace( '}},"', '}},' . PHP_EOL . '"', $config );
+		}
+
+		$script_data = 'var ' . $js_var . ' = ' . $config . ';';
+
+		wp_add_inline_script( $handle, $script_data, 'before' );
+	}
+
+	public static function handle_deprecation( $item, $version, $replacement = null ) {
+		preg_match( '/^[0-9]+\.[0-9]+/', ELEMENTOR_VERSION, $current_version );
+
+		$current_version_as_float = (float) $current_version[0];
+
+		preg_match( '/^[0-9]+\.[0-9]+/', $version, $alias_version );
+
+		$alias_version_as_float = (float) $alias_version[0];
+
+		if ( round( $current_version_as_float - $alias_version_as_float, 1 ) >= self::DEPRECATION_RANGE ) {
+			_deprecated_file( $item, $version, $replacement );
+		}
+	}
+
+	/**
+	 * Checks a control value for being empty, including a string of '0' not covered by PHP's empty().
+	 *
+	 * @param mixed $source
+	 * @param bool|string $key
+	 *
+	 * @return bool
+	 */
+	public static function is_empty( $source, $key = false ) {
+		if ( is_array( $source ) ) {
+			if ( ! isset( $source[ $key ] ) ) {
+				return true;
+			}
+
+			$source = $source[ $key ];
+		}
+
+		return '0' !== $source && empty( $source );
+	}
+
+	public static function has_pro() {
+		return defined( 'ELEMENTOR_PRO_VERSION' );
+	}
+
+	/**
+	 * Convert HTMLEntities to UTF-8 characters
+	 *
+	 * @param $string
+	 * @return string
+	 */
+	public static function urlencode_html_entities( $string ) {
+		$entities_dictionary = [
+			'&#145;' => "'", // Opening single quote
+			'&#146;' => "'", // Closing single quote
+			'&#147;' => '"', // Closing double quote
+			'&#148;' => '"', // Opening double quote
+			'&#8216;' => "'", // Closing single quote
+			'&#8217;' => "'", // Opening single quote
+			'&#8218;' => "'", // Single low quote
+			'&#8220;' => '"', // Closing double quote
+			'&#8221;' => '"', // Opening double quote
+			'&#8222;' => '"', // Double low quote
+		];
+
+		// Decode decimal entities
+		$string = str_replace( array_keys( $entities_dictionary ), array_values( $entities_dictionary ), $string );
+
+		return rawurlencode( html_entity_decode( $string, ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
+	}
+
+	/**
+	 * Parse attributes that come as a string of comma-delimited key|value pairs.
+	 * Removes Javascript events and unescaped `href` attributes.
+	 *
+	 * @param string $attributes_string
+	 *
+	 * @param string $delimiter Default comma `,`.
+	 *
+	 * @return array
+	 */
+	public static function parse_custom_attributes( $attributes_string, $delimiter = ',' ) {
+		$attributes = explode( $delimiter, $attributes_string );
+		$result = [];
+
+		foreach ( $attributes as $attribute ) {
+			$attr_key_value = explode( '|', $attribute );
+
+			$attr_key = mb_strtolower( $attr_key_value[0] );
+
+			// Remove any not allowed characters.
+			preg_match( '/[-_a-z0-9]+/', $attr_key, $attr_key_matches );
+
+			if ( empty( $attr_key_matches[0] ) ) {
+				continue;
+			}
+
+			$attr_key = $attr_key_matches[0];
+
+			// Avoid Javascript events and unescaped href.
+			if ( 'href' === $attr_key || 'on' === substr( $attr_key, 0, 2 ) ) {
+				continue;
+			}
+
+			if ( isset( $attr_key_value[1] ) ) {
+				$attr_value = trim( $attr_key_value[1] );
+			} else {
+				$attr_value = '';
+			}
+
+			$result[ $attr_key ] = $attr_value;
+		}
+
+		return $result;
 	}
 }

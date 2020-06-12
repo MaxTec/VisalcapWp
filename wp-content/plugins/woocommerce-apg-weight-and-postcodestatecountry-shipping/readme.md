@@ -7,13 +7,13 @@ Tags: Art Project Group, APG, Plugins, WooCommerce, e-Commerce, Commerce, Shop, 
 
 Requires at least: 3.8
 
-Tested up to: 5.0
+Tested up to: 5.5
 
-Stable tag: 2.2.3.2
+Stable tag: 2.3.1.4
 
 WC requires at least: 2.6
 
-WC tested up to: 3.4
+WC tested up to: 4.2
 
 License: GPLv3
 
@@ -38,6 +38,8 @@ Añade a WooCommerce el cálculo de los gastos de envío según el peso, dimensi
 * Puedes asignar tarifas a clases de envío específicas.
 * Puedes seleccionar la tarifa de clase de envío más cara en lugar de la suma de tarifas.
 * Puedes elegir si aceptar excesos de peso o dimensiones.
+* Puedes excluir el envío de una o varias categorías de producto.
+* Puedes excluir el envío de una o varias etiquetas de producto.
 * Puedes excluir el envío de una, varias o todas las clases de envío del sistema.
 * Puedes excluir roles de usuario.
 * Puedes ocultar medios de pago.
@@ -69,7 +71,6 @@ No olvides dejarnos tu comentario en:
 * [WC - APG Weight Shipping](https://artprojectgroup.es/plugins-para-woocommerce/wc-apg-weight-shipping) en Art Project Group.
 * [Art Project Group](https://www.facebook.com/artprojectgroup) en Facebook.
 * [@artprojectgroup](https://twitter.com/artprojectgroup) en Twitter.
-* [+ArtProjectGroupES](https://plus.google.com/+ArtProjectGroupES/) en Google+.
 
 ### Más plugins
 Recuerda que puedes encontrar más [plugins para WordPress](https://artprojectgroup.es/plugins-para-wordpress) y más [plugins para WooCommerce](https://artprojectgroup.es/plugins-para-woocommerce) en [Art Project Group](https://artprojectgroup.es) y en nuestro perfil en [WordPress](https://profiles.wordpress.org/artprojectgroup/).
@@ -97,6 +98,41 @@ Si necesitas ayuda para configurar o instalar **WC - APG Weight Shipping**, **Ar
 *En ningún caso **Art Project Group** proporciona ningún tipo de soporte técnico gratuito.*
 
 ## Changelog
+### 2.3.1.4
+* Pequeñas correcciones en el cálculo de los costes de envío. **Notificado por [aceone999](https://wordpress.org/support/topic/wrong-fee-with-shipping-classes/)**.
+
+### 2.3.1.3
+* Pequeños arreglos.
+
+### 2.3.1.2
+* Pequeñas correcciones en el cálculo de los costes de envío. **Notificado por [aceone999](https://wordpress.org/support/topic/version-2-3-1-1-still-broken/)**.
+
+### 2.3.1.1
+* Pequeñas correcciones en el cálculo de los costes de envío. **Notificado por [aceone999](https://wordpress.org/support/topic/bug-for-dimensions-in-2-3-1/)**.
+
+### 2.3.1
+* Función de generación de tarifas reescrita.
+
+### 2.3.0.3
+* Pequeñas correcciones en el cálculo de los costes de envío. **Notificado por [lepress](https://wordpress.org/support/topic/fee-is-wrong-for-being-ignorant-the-shipping-class/#post-11943232)**.
+
+
+### 2.3.0.2
+* Pequeños arreglos en la exclusión del envío por categorías y etiquetas de producto.
+
+### 2.3.0.1
+* Pequeños arreglos.
+
+### 2.3
+* Añadidas opciones para excluir el envío por categorías y etiquetas de producto. **Actualización patrocinada por [YonofumoYovapeo](https://yonofumoyovapeo.com)**.
+* Actualización de captura de pantalla.
+
+### 2.2.3.4
+* Pequeños arreglos.
+
+### 2.2.3.3
+* Pequeños arreglos.
+
 ### 2.2.3.2
 * Pequeños arreglos.
 
@@ -105,6 +141,7 @@ Si necesitas ayuda para configurar o instalar **WC - APG Weight Shipping**, **Ar
 
 ### 2.2.3
 * Cambio de nombre del plugin: de WooCommerce - APG Weight and Postcode/State/Country Shipping a WC - APG Weight Shipping.
+
 ### 2.2.2.2
 * Ajuste para optimizar la compatibilidad con WooCommerce Product Bundles.
 
@@ -164,6 +201,7 @@ Si necesitas ayuda para configurar o instalar **WC - APG Weight Shipping**, **Ar
 * Soporte para añadir imagen personalizada.
 * Soporte para añadir el tiempo estimado de entrega.
 * Actualización de la captura de pantalla.
+
 ### 2.0.3.1
 * Ajuste para optimizar la compatibilidad con WooCommerce 2.7.
 

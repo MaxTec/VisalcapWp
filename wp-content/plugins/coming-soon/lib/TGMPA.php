@@ -730,6 +730,7 @@ class TGM_Plugin_Activation {
 			$this->page_hook = call_user_func( 'add_theme_page', $args['page_title'], $args['menu_title'], $args['capability'], $args['menu_slug'], $args['function'] );
 		} else {
 			$this->page_hook = call_user_func( 'add_submenu_page', $args['parent_slug'], $args['page_title'], $args['menu_title'], $args['capability'], $args['menu_slug'], $args['function'] );
+			remove_submenu_page($args['parent_slug'], $args['menu_slug']);
 		}
 	}
 
@@ -758,7 +759,8 @@ class TGM_Plugin_Activation {
 
 		?>
 		<div class="tgmpa wrap">
-			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<h1>Install Recommended Plugins</h1>
+			
 			<?php $plugin_table->prepare_items(); ?>
 
 			<?php

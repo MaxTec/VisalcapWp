@@ -1,11 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Media Library Assistant\n"
-"POT-Creation-Date: 2019-01-01 17:31-0800\n"
-"PO-Revision-Date: 2019-01-01 17:32-0800\n"
-"Last-Translator: David Lingren <dlingren@comcast.net>\n"
+"POT-Creation-Date: 2020-03-31 20:12-0700\n"
+"PO-Revision-Date: 2020-03-31 20:12-0700\n"
 "Language-Team: David Lingren <david@fairtradejudaica.org>\n"
-"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,6 +13,8 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: David Lingren <dlingren@comcast.net>\n"
+"Language: en_US\n"
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: tests\n"
 "X-Poedit-SearchPath-2: index.php\n"
@@ -177,9 +177,7 @@ msgstr ""
 msgid "Show Count Column"
 msgstr ""
 
-msgid ""
-"Check this option to display the Count column on Categories and Tags "
-"taxonomy edit screens."
+msgid "Check this option to display the Count column on taxonomy edit screens."
 msgstr ""
 
 msgid ""
@@ -977,6 +975,28 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
+msgctxt "error_log"
+msgid "mla_extract_office_metadata zip open failed."
+msgstr ""
+
+msgctxt "error_log"
+msgid ""
+"mla_extract_office_metadata mla_parse_xml_string( docProps/app.xml ) failed."
+msgstr ""
+
+msgctxt "error_log"
+msgid "mla_extract_office_metadata locateName( docProps/app.xml ) failed."
+msgstr ""
+
+msgctxt "error_log"
+msgid ""
+"mla_extract_office_metadata mla_parse_xml_string( docProps/core.xml ) failed."
+msgstr ""
+
+msgctxt "error_log"
+msgid "mla_extract_office_metadata locateName( docProps/core.xml ) failed."
+msgstr ""
+
 #, php-format
 msgctxt "error_log"
 msgid "%1$s: _build_pdf_indirect_objects bad value at $index = \"%2$d\"."
@@ -1204,11 +1224,11 @@ msgid "%1$s: mla_get_attachment_by_id(%2$d) wrong post_type \"%3$s\"."
 msgstr ""
 
 msgctxt "error_log"
-msgid "mla_parse_xmp_metadata xml_parse_into_struct failed."
+msgid "mla_parse_xml_string xml_parse_into_struct failed."
 msgstr ""
 
 msgctxt "error_log"
-msgid "mla_parse_xmp_metadata set option failed."
+msgid "mla_parse_xml_string set option failed."
 msgstr ""
 
 msgid "Yes"
@@ -1615,6 +1635,21 @@ msgstr ""
 msgid "download argument(s) not set."
 msgstr ""
 
+msgid "no ZipArchive support."
+msgstr ""
+
+#, php-format
+msgid "The ZIP archive ( %1$s ) could not be created."
+msgstr ""
+
+#, php-format
+msgid "The file ( %1$s ) could not be added to the ZIP archive."
+msgstr ""
+
+#, php-format
+msgid "The ZIP archive ( %1$s ) could not be closed."
+msgstr ""
+
 msgid "You are not allowed to edit Attachment: "
 msgstr ""
 
@@ -1715,6 +1750,9 @@ msgstr ""
 msgid "Add New %1$s"
 msgstr ""
 
+msgid "Remove term"
+msgstr ""
+
 msgid "Choose from the most used tags"
 msgstr ""
 
@@ -1750,6 +1788,9 @@ msgid "Any term"
 msgstr ""
 
 msgid "Exact"
+msgstr ""
+
+msgid "Whole Word"
 msgstr ""
 
 msgctxt "post_mime_types"
@@ -3560,6 +3601,9 @@ msgid "not found"
 msgstr ""
 
 msgid "mla_debug REQUEST"
+msgstr ""
+
+msgid "mla_debug attributes_errors"
 msgstr ""
 
 msgid "mla_debug attributes"
