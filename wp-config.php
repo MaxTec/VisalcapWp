@@ -18,20 +18,20 @@
  * @package WordPress
  */
 
-//define( 'WP_HOME', 'http://localhost/visalcap' );
-//define( 'WP_SITEURL', 'http://localhost/visalcap' );
+define( 'WP_HOME', 'https://visalcap.shop' );
+define( 'WP_SITEURL', 'https://visalcap.shop' );
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'visalcap_wp771');
+define('DB_NAME', 'visalcap');
 
 /** MySQL database username */
-define('DB_USER', 'visalcap_wp771');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '0FJ-!pS935');
+define('DB_PASSWORD', 'd3vExte4am*90');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
@@ -89,4 +89,5 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
+/** Sets up 'direct' method for wordpress, auto update without ftp */
+define('FS_METHOD','direct');
