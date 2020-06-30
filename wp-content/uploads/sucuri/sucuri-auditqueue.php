@@ -6464,3 +6464,8 @@ exit(0);
 1592328475_0411:"Depuraci\u00f3n: exilie, 187.252.207.10; Sucuri plugin has been deactivated"
 1592328475_0442:"Advertencia: exilie, 187.252.207.10; Plugin deactivated: Sucuri Security - Auditor\u00eda, detecci\u00f3n de malware, y fortificaci\u00f3n (v1.8.24; sucuri-scanner\/sucuri.php)"
 1592330616_2967:"Advertencia: exilie, 189.176.11.105; Plugin activated: Sucuri Security - Auditor\u00eda, detecci\u00f3n de malware, y fortificaci\u00f3n (v1.8.24; sucuri-scanner\/sucuri.php)"
+1592330817_1351:"Depuraci\u00f3n: exilie, 189.176.11.105; Sucuri plugin has been deactivated"
+1592330817_1375:"Advertencia: exilie, 189.176.11.105; Plugin deactivated: Sucuri Security - Auditor\u00eda, detecci\u00f3n de malware, y fortificaci\u00f3n (v1.8.24; sucuri-scanner\/sucuri.php)"
+1592330823_0328:"Advertencia: exilie, 189.176.11.105; Plugin activated: Sucuri Security - Auditor\u00eda, detecci\u00f3n de malware, y fortificaci\u00f3n (v1.8.24; sucuri-scanner\/sucuri.php)"
+1592330915_5789:"Depuraci\u00f3n: exilie, 187.252.207.10; Sucuri plugin has been deactivated"
+1592330915_5815:"Advertencia: exilie, 187.252.207.10; Plugin deactivated: Sucuri Security - Auditor\u00eda, detecci\u00f3n de malware, y fortificaci\u00f3n (v1.8.24; sucuri-scanner\/sucuri.php)"
